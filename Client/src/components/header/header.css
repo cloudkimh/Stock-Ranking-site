@@ -1,0 +1,27 @@
+.header_wrapper {
+   background-color: #fff;
+   height: 70px;
+   display: flex;
+   padding: 10px;
+   gap: 10px;
+   align-items: center;
+   border-bottom: 1px solid #fff;
+}
+.sidebar_toggle_btn {
+   padding: 5px;
+   background-color: transparent;
+   outline: unset;
+   border: unset;
+   color: #000;
+   transition: all 0.5s;
+}
+.sidebar_toggle_btn:hover {
+   color: #000;
+}
+body.dark .sidebar_toggle_btn {
+   color: #fff;
+}
+body.dark .header_wrapper {
+   background-color: var(--background);
+   border-bottom: 1px solid #393939;
+}

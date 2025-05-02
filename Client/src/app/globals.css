@@ -1,0 +1,37 @@
+:root {
+  --background: #ffffff;
+  --foreground: #0d0e12;
+}
+body.dark {
+  --background: #0d0e12;
+  --foreground: #0d0e12;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0d0e12;
+    --foreground: #ededed;
+  }
+}
+body {
+  background: var(--foreground);
+  color: var(--background);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.main_content {
+  padding-left: 250px;
+  transition: all 0.4s;
+}
+.sidebar_toggle .main_content {
+  padding-left: 0px;
+}
+.scrollbar-hide {
+  scrollbar-width: none;
+}
+.form-check-input:checked {
+  background-color: #36884a;
+  border-color: #36884a;
+}
+.inner_section{
+  padding: 20px;
+  height: calc(100vh - 70px);
+}

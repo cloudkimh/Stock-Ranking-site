@@ -1,0 +1,113 @@
+.userbtn {
+   background-color: #e7e7e7;
+   border-radius: 50px;
+   padding: 8px;
+   border: unset;
+   color: #858585;
+}
+.userbtn_wrapper {
+   margin-left: auto;
+   position: relative;
+}
+.userbtn_wrapper:hover .userdropdown {
+   opacity: 1;
+   visibility: visible;
+}
+.userdropdown::after {
+   content: '';
+   width: 10px;
+   height: 10px;
+   border: 1px solid #ccc;
+   position: absolute;
+   right: 15px;
+   background-color: #fff;
+   border-right: 0;
+   border-bottom: 0;
+   top: -5.5px;
+   transform: rotate(45deg);
+}
+.userdropdown {
+   transition: all 0.2s;
+   position: absolute;
+   right: 0;
+   width: 100%;
+   margin-top: 10px;
+   opacity: 0;
+   visibility: hidden;
+   min-width: 200px;
+   border: 1px solid #ccc;
+   display: flex;
+   background-color: #fff;
+   padding: 8px;
+   border-radius: 10px;
+   box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.10);
+}
+.form-check-label {
+   cursor: pointer;
+}
+.list {
+   width: 100%;
+   justify-content: space-between;
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   padding: 5px 10px;
+   border-radius: 7px;
+   margin-bottom: 5px;
+   cursor: pointer;
+}
+.list:hover {
+   background-color: #ddd;
+}
+.userdropdown_inner {
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+}
+.list .logoutbtn {
+   width: 100%;
+   display: flex;
+   padding: 0;
+   color: #000;
+   align-items: center;
+   gap: 10px;
+   border: unset;
+   justify-content: flex-start;
+}
+.list .logoutbtn:active {
+   color: #fff;
+}
+.username_block {
+   color: #000;
+   padding: 8px 10px;
+   border-radius: 7px;
+   display: flex;
+   background-color: rgb(0 0 0 / 13%);
+   gap: 10px;
+   align-items: center;
+   margin-bottom: 5px;
+}
+.username_block p {
+   color: #000;
+   margin: 0;
+}
+
+body.dark .list:hover {
+   background-color: rgba(189, 189, 189, 0.129)
+}
+body.dark .username_block,
+body.dark .list .logoutbtn,
+body.dark .username_block p,
+body.dark .form-check-label {
+   color: #fff;
+}
+body.dark .userdropdown::after,
+body.dark .userdropdown {
+   border-color: #37383e;
+   background-color: #37383e;
+}
+body.dark .userbtn {
+   background-color: #353535;
+   color: #adadad;
+   border-color: #afafaf;
+}

@@ -1,0 +1,23 @@
+📁 my-app
+├── 📄 app.js
+├── 📄 server.js
+├── 📄 package.json
+├── 📄 .env
+├── 📄 .gitignore
+├── 📁 config
+│   ├── 📄 db.config.js
+│   └── 📄 logger.config.js
+├── 📁 global
+│   └── 📄 constant.js
+├── 📁 database
+└── 📁 api
+    ├── 📁 v1
+    │   ├── 📁 routes
+    │   │   └── 📄 index.js
+    │   └── 📁 user
+    │       ├── 📄 user.controllers.js
+    │       ├── 📄 user.models.js
+    │       ├── 📄 user.routes.js
+    │       ├── 📄 user.services.js
+    │       └── 📄 user.validation.js
+    └── 📄 index.js
