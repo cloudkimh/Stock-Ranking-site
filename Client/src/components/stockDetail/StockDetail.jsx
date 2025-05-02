@@ -1,5 +1,7 @@
 'use client'
 import Image from 'next/image';
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
 import RankImage from '../../../public/assets/icons/rank.png'
 import { useParams } from 'next/navigation';
 import './stockdetail.css'
@@ -47,7 +49,6 @@ const StockDetail = () => {
                      </span>
                      <span className='categorybox'>
                         <Gamepad2 width={20} />
-
                         Video games
                      </span>
                   </div>
@@ -110,6 +111,30 @@ const StockDetail = () => {
                   <p className='mb-0'>Price-to-Book Ratio</p>
                </div>
             </div>
+         </div>
+         <div className="stockmarket_tab_section">
+            <Tabs
+               defaultActiveKey="marketcap"
+               className="commontab_section"
+            >
+               <Tab eventKey="marketcap" title="Market Cap">
+                  <div className="tab_content">
+                     <h3>Market capitalization of <i className='text-capitalize text-primary'> {stock}</i> (MSFT)</h3>
+                     <h6>Market cap: <span className='text-bg-warning ps-1 pe-1'>₹267.001 Trillion</span></h6>
+                     <p>As of May 2025 Microsoft has a market cap of ₹267.001 Trillion. This makes Microsoft the world's 2nd most valuable company by market cap according to our data. The market capitalization, commonly called market cap, is the total market value of a publicly traded company's outstanding shares and is commonly used to measure how much a company is worth.</p>
+                  </div>
+               </Tab>
+               <Tab eventKey="Revenue" title="Revenue">
+               </Tab>
+               <Tab eventKey="Earnings" title="Earnings">
+               </Tab>
+               <Tab eventKey="Price history" title="Price history">
+               </Tab>
+               <Tab eventKey="P/E ratio" title="P/E ratio">
+               </Tab>
+               <Tab eventKey="P/S ratio" title="P/S ratio">
+               </Tab>
+            </Tabs>
          </div>
       </div>
    );
