@@ -1,6 +1,6 @@
 .stockImage{
-   width: 20px;
-   height: 20px;
+   width: 25px;
+   height: 25px;
    border-radius: 100px;
    overflow: hidden;
    display: flex;
@@ -14,16 +14,34 @@
 .topheader_title h3{
    font-weight: 700;
 }
-body.dark .topheader_title h3{
-   color: #fff;   
-}
 .stocklink{
    color: #6e6e6e;
    font-weight: 500;
    text-decoration: unset;
+   
 }
 .stocklink:hover{
    opacity: 0.8;
+}
+.stockcategory{
+   font-size: 12px;
+}
+.rank_text {
+   top: 35%;
+   left: 50%;
+   content: '';
+   color: #fff;
+   background-color: #fd3b48;
+   width: 18px;
+   height: 18px;
+   border-radius: 100px;
+   transform: translate(-50%, -50%);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   position: absolute;
+   font-size: 12px;
+   font-weight: 700;
 }
 body.dark .stocklink {
    color: #fff;

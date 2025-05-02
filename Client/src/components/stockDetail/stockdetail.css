@@ -1,0 +1,118 @@
+.stocktitle {
+   font-weight: 700;
+   font-size: 40px;
+   text-transform: capitalize;
+}
+.stock_inner_row {
+   display: flex;
+   gap: 20px;
+   justify-content: space-between;
+}
+.stock_info_p {
+   padding: 10px 15px;
+   border: 1px solid #ccc;
+   border-radius: 10px;
+   margin-top: 5px;
+}
+body.dark .stock_info_p{
+   border-color: #404040;
+}
+.webglobe{
+   margin-left: auto;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   padding: 5px 10px;
+   display: flex;
+   gap: 6px;
+   align-items: center;
+   text-decoration: unset;
+   color: #000;
+}
+body.dark .webglobe{
+   color: #fff;
+   border-color: #c9c9c954;
+}
+body.dark .webglobe:hover{
+   background-color: #68686854;
+}
+.webglobe:hover{
+   background-color: #eff7ff;
+}
+.webglobe p{
+   font-weight: 600;
+   margin-bottom: 0;
+}
+.rank_block span {
+   width: 22px;
+   height: 22px;
+   position: absolute;
+   left: 50%;
+   top: 34%;
+   transform: translate(-50%, -50%);
+   background-color: #fd3b48;
+   border-radius: 100px;
+   display: flex;
+   font-weight: 600;
+   color: #fff;
+   align-items: center;
+   justify-content: center;
+}
+.stockbox {
+   padding: 20px;
+   border-radius: 5px;
+   width: 31%;
+   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+}
+body.dark .stockbox {
+   background-color: rgba(145, 145, 145, 0.071);
+}
+.stocknumber{
+   font-size: 30px;
+   font-weight: 700;
+}
+.categorybox {
+   background-color: #b5b5b54d;
+   display: flex;
+   gap: 5px;
+   align-items: center;
+   color: #000000;
+   padding: 5px 8px;
+   border-radius: 7px;
+}
+body.dark .categorybox {
+   color: #fff;
+}
+.categorybox_wrap{
+   margin-top: 10px;
+   display: flex;
+   gap: 10px;
+   flex-wrap: wrap;
+}
+.rankname{
+   background-color: rgba(0, 128, 0, 0.563);
+   color: #fff;
+   padding: 2px 8px;
+   font-size: 12px;
+   border-radius: 5px;
+   white-space: nowrap;
+}
+.stock_inf_name span{
+   font-size: 16px;
+   margin-left: 5px;
+   display: flex;
+}
+.stock_inf_name{
+   display: flex;
+   gap: 5px;
+   font-size: 22px;
+   color: #6a6a6a;
+   align-items: center;
+}
+body.dark .stock_inf_name{
+   color: #a7a5a5;
+}
+.stockbox_wrapper{
+   display: flex;
+   gap: 20px;
+   flex-wrap: wrap;
+}
