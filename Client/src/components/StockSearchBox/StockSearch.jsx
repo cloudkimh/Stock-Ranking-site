@@ -20,7 +20,7 @@ const StockSearch = ({ onSearch }) => {
       if (onSearch) {
          onSearch(debouncedQuery);
       }
-   }, [debouncedQuery, onSearch]);
+   }, [debouncedQuery]);
 
    const handleInputChange = (e) => {
       const value = e.target.value;
