@@ -19,7 +19,7 @@ module.exports = {
               primaryKey: true,
               allowNull: false,
           },
-          stk_cd: { type: Sequelize.STRING, allowNull: false },
+          stk_cd: { type: Sequelize.STRING, unique: true, allowNull: false },
           stk_nm: { type: Sequelize.STRING, allowNull: true },
           setl_mm: { type: Sequelize.STRING, allowNull: true },
           fav: { type: Sequelize.BIGINT, allowNull: true },

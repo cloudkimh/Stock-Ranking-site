@@ -10,7 +10,7 @@ export default (sequelize, DataTypes) => {
             primaryKey: true,
             allowNull: false,
         },
-        stk_cd: { type: DataTypes.STRING, allowNull: false },
+        stk_cd: { type: DataTypes.STRING, unique: true, allowNull: false },
         stk_nm: { type: DataTypes.STRING, allowNull: true },
         setl_mm: { type: DataTypes.STRING, allowNull: true },
         fav: { type: DataTypes.BIGINT, allowNull: true },
@@ -79,6 +79,14 @@ export default (sequelize, DataTypes) => {
         updatedAt: 'updated_at',
         underscored: true, // optional
     });
+
+    StockinfoModel.associate = (models) => {
+        StockinfoModel.belongsTo(models.StocklistModel, {
+            foreignKey: 'stk_cd',
+            targetKey: 'code',
+            as: 'stock_list',
+        });
+    };
 
     return StockinfoModel;
 };

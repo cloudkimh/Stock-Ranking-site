@@ -19,6 +19,7 @@ module.exports = {
                 primaryKey: true,
                 allowNull: false,
             },
+            stk_cd: { type: Sequelize.STRING, unique: true, allowNull: false },
             dt: { type: Sequelize.STRING, allowNull: true },
             cur_prc: { type: Sequelize.STRING, allowNull: true },
             pre_sig: { type: Sequelize.STRING, allowNull: true },

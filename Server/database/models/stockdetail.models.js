@@ -10,6 +10,7 @@ export default (sequelize, DataTypes) => {
             primaryKey: true,
             allowNull: false,
         },
+        stk_cd: { type: DataTypes.STRING, unique: true, allowNull: false },
         dt: { type: DataTypes.STRING, allowNull: true },
         cur_prc: { type: DataTypes.STRING, allowNull: true },
         pre_sig: { type: DataTypes.STRING, allowNull: true },
@@ -52,6 +53,14 @@ export default (sequelize, DataTypes) => {
         updatedAt: 'updated_at',
         underscored: true, // optional
     });
+
+    StockdetailModel.associate = (models) => {
+        StockdetailModel.belongsTo(models.StocklistModel, {
+            foreignKey: 'stk_cd',
+            targetKey: 'code',
+            as: 'stock_list',
+        });
+    };
 
     return StockdetailModel;
 };
