@@ -9,7 +9,7 @@ body.dark {
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0d0e12;
-    --foreground: #ededed;
+    --foreground: #fff;
   }
 }
 body {
@@ -31,7 +31,80 @@ body {
   background-color: #36884a;
   border-color: #36884a;
 }
-.inner_section{
+.inner_section {
   padding: 20px;
   height: calc(100vh - 70px);
+}
+body.dark .cm_table tr td,
+body.dark .cm_table tr th {
+  color: #fff;
+  background-color: #242424;
+}
+/* .cm_table tr:hover td {
+  background-color: rgba(241, 241, 241, 0.785);
+}
+body.dark .cm_table tr:hover td {
+  background-color: #1f1f1f;
+} */
+.cm_table tr td,
+.cm_table tr th {
+  transition: all 0.3s;
+  border: unset;
+  padding: 5px 15px;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-align: center;
+  background-color: #f3f3f3;
+}
+.cm_table tr:nth-child(even) td{
+  background-color: #efefef;
+}
+body.dark .cm_table tr:nth-child(even) td{
+  background-color: #202020 !important;
+}
+body.dark .cm_table tr th button,
+body.dark .cm_table tr th button span{
+  color: #fff;
+  background-color: #242424;
+}
+.cm_table tr th button,
+.cm_table tr th button span{
+  color: #727272;
+  font-weight: 500;
+}
+.cm_table tr th {
+  color: #727272;
+  font-weight: 500;
+}
+body.dark .cm_table tr td {
+  background-color: #000;
+  border-bottom: 1px solid #242424;
+}
+.cm_table tr td {
+  background-color: #fff;
+  padding: 15px 15px;
+  font-size: 18px;
+  border-bottom: 1px solid #f3f3f3;
+}
+.cm_table tr td:last-child {
+  text-align: right;
+}
+.cm_table tr td:first-child {
+  text-align: left;
+}
+.cm_table tr th:last-child {
+  text-align: right;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.cm_table tr th:first-child {
+  text-align: left;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.cm_table {
+  width: 100%;
+}
+.badge{
+  border-radius: 5px;
 }

@@ -4,6 +4,7 @@ import { Menu, ListMinus } from "lucide-react";
 import React, { useState } from 'react'
 import './header.css'
 import UserDropdown from "../UserDropdown/UserDropdown";
+import LanguageSelect from "./LanguageSelect";
 
 const Header = () => {
 
@@ -22,7 +23,10 @@ const Header = () => {
                   <ListMinus size={32} fill="transparent" />
             }
          </button>
-         <UserDropdown />
+         <div className="d-flex gap-2 ml-auto align-items-center">
+            <LanguageSelect />
+            <UserDropdown />
+         </div>
       </header>
    )
 }
