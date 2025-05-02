@@ -90,5 +90,19 @@ export default (sequelize, DataTypes) => {
         underscored: false, // optional
     });
 
+    StocklistModel.associate = (models) => {
+        StocklistModel.hasOne(models.StockinfoModel, {
+            foreignKey: 'stk_cd',
+            sourceKey: 'code',
+            as: 'stock_info',
+        });
+
+        StocklistModel.hasOne(models.StockdetailModel, {
+            foreignKey: 'stk_cd',
+            sourceKey: 'code',
+            as: 'stock_detail',
+        });
+    };
+
     return StocklistModel;
 }

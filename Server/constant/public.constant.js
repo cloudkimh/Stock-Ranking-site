@@ -1,5 +1,6 @@
 
 export const SUPPORTED_LANGUAGES = ['en', 'ko'];
+export const TIMEZONE = "Asia/Seoul";
 
 export const ROLE = {
     SUPERADMIN: "superadmin",

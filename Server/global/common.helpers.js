@@ -22,18 +22,18 @@ export const verifyJWToken = async (token) => {
 /* *** JWT enddd *** */
 
 /* *** Pagination start *** */
-export function paginate(page = 1, limit = 10) {
+export const paginate = async (page = 1, limit = 10) => {
     const offset = (page - 1) * limit;
     return { limit, offset };
 }
 
-export function paginationData(data, page = 1, limit = 10) {
+export const pagination = async (data, page = 1, limit = 10) => {
     const totalCount = data.count;
     const totalPages = Math.ceil(totalCount / limit);
     const currentPage = Number(page);
   
     return {
-      count,
+      count: totalCount,
       limit,
       page: currentPage,
       totalPages,
@@ -53,4 +53,18 @@ export const isEmpty = (value) => {
         (Array.isArray(value) && value.length === 0) ||
         (typeof value === 'object' && !Array.isArray(value) && Object.keys(value).length === 0)
     );
+}
+
+export const valueConvertIntoInteger = async (data, intKeys) => {
+    for (const key in data) {
+        const val = data[key];
+        if (val === '') {
+            data[key] = null;
+        } else if (intKeys.includes(key)) {
+            const num = parseInt(String(val).replace(/[^\d-]/g, ''), 10);
+            data[key] = isNaN(num) ? null : num;
+        }
+    }
+
+    return data;
 }
