@@ -98,3 +98,32 @@ body.dark .cm_table tr td {
 .badge{
   border-radius: 20px;
 }
+.commontab_section{
+  border: unset;
+  display: flex;
+  gap: 10px;
+}
+.tab_content{
+  margin-top: 30px;
+}
+.commontab_section .nav-item{
+  border: unset;
+}
+.commontab_section .nav-item button.active{
+  font-weight: 600;
+  border-bottom:3px solid #000;
+}
+.commontab_section .nav-item button{
+  color: #000;
+  font-size: 18px;
+  border: unset;
+  padding: 5px 10px;
+  border-bottom: 3px solid transparent;
+}
+body.dark .commontab_section .nav-item button.active{
+  background-color: transparent;
+  border-bottom-color: #fff;
+}
+body.dark .commontab_section .nav-item button{
+  color: #fff;
+}

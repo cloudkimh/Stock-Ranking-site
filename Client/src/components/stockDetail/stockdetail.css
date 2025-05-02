@@ -116,3 +116,12 @@ body.dark .stock_inf_name{
    gap: 20px;
    flex-wrap: wrap;
 }
+body.dark .stockmarket_tab_section{
+   background-color: rgba(145, 145, 145, 0.071);
+}
+.stockmarket_tab_section{
+   margin-top: 50px;
+   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+   padding: 20px;
+   border-radius: 8px;
+}
