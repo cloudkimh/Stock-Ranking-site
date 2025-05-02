@@ -1,6 +1,8 @@
 'use client'
 import './sidebar.css'
 import { Lightbulb, House, BadgeDollarSign, PackagePlus, ShieldEllipsis, Rocket, ShieldCheck, CalendarDays, HandHeart, Goal } from "lucide-react";
+import Image from 'next/image';
+import logo from '../../../public/assets/icons/logo.png'
 import { usePathname } from 'next/navigation';
 
 const Sidebar = () => {
@@ -24,7 +26,9 @@ const Sidebar = () => {
    return (
       <div className="sidebar_container">
          <div className="main_logo">
-            <a href="/">STOCKLIST</a>
+            <a href="/">
+               <Image src={logo} width={170} height={52} alt="logo"/>
+            </a>
          </div>
          <div className="sidebar_inner scrollbar-hide">
             <nav className="navlist">

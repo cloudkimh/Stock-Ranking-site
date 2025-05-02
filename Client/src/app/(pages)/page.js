@@ -1,5 +1,9 @@
+import StockListing from "@/components/stocklisting/StockListing";
+
 export default function Home() {
    return (
-      <h2>Home</h2>
+      <div className="">
+         <StockListing />
+      </div>
    );
 }
