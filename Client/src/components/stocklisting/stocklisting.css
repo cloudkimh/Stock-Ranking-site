@@ -46,3 +46,22 @@
 body.dark .stocklink {
    color: #fff;
 }
+.pagination_block .btn:active{
+   background-color: #27334b;
+}
+.pagination_block .btn:disabled{
+   background-color: #505154;
+   cursor: not-allowed;
+}
+.pagination_block .btn {
+   background-color: #858b97;
+   color: #ffffff;
+   border: unset;
+}
+body.dark .pagination_block .btn{
+   background-color: #27334b;
+   color: #fff;
+}
+.pagination_block{
+   white-space: nowrap;
+}
