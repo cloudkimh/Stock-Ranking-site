@@ -8,14 +8,14 @@ const ApexChart = dynamic(() => import('react-apexcharts'), { ssr: false });
 const HexagonRadarChart = () => {
    const categories = [
       'Code Security',
-      '운영',         // Korean for "Operations"
-      '커뮤니티',     // Korean for "Community"
-      '기본',         // Korean for "Fundamentals"
+      '운영',    
+      '커뮤니티',     
+      '기본',       
       'Governance',
-      '마켓',         // Korean for "Market"
+      '마켓',        
    ];
 
-   const dataValues = [0, 0, 0, 0, 93.29, 91.41];
+   const dataValues = [0, 0, 0, 0, 100, 100];
 
    const chartOptions = {
       chart: {
@@ -45,7 +45,7 @@ const HexagonRadarChart = () => {
       },
       markers: {
          size: 4,
-         colors: ['#000'],
+         colors: ['#fff'],
          strokeColors: '#FFD700',
       },
       dataLabels: {
@@ -56,7 +56,7 @@ const HexagonRadarChart = () => {
             polygons: {
                strokeColor: '#1e1e1e',
                fill: {
-                  colors: ['#64a764', '#64a764'],
+                  colors: ['#698b3f', '#698b3f'],
                },
             },
          },

@@ -87,13 +87,15 @@
    align-items: center;
    margin-bottom: 5px;
 }
+body.dark .username_block{
+   background-color: rgb(143 143 143 / 37%);
+}
 .username_block p {
    color: #000;
    margin: 0;
 }
-
 body.dark .list:hover {
-   background-color: rgba(189, 189, 189, 0.129)
+   background-color: rgb(235 235 235 / 14%);
 }
 body.dark .username_block,
 body.dark .list .logoutbtn,
@@ -103,11 +105,11 @@ body.dark .form-check-label {
 }
 body.dark .userdropdown::after,
 body.dark .userdropdown {
-   border-color: #37383e;
-   background-color: #37383e;
+   border-color: #3a3a3a;
+   background-color: #000;
 }
 body.dark .userbtn {
-   background-color: #353535;
-   color: #adadad;
+   background-color: #323642;
+   color: #fff;
    border-color: #afafaf;
 }
