@@ -4,15 +4,22 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import RankImage from '../../../public/assets/icons/rank.png'
 import { useParams } from 'next/navigation';
-import './stockdetail.css'
 import { Activity, BrainCircuit, ChartColumnDecreasing, ChartPie, Cpu, DollarSign, FileCode2, Gamepad2, Globe } from 'lucide-react';
 import MiniLineChart from '../Charts/MiniLineChart';
 import HexagonRadarChart from '../Charts/HexagonRadarChart';
+import MarketCapChart from '../Charts/MarketCapChart';
+import './stockdetail.css'
 
 const StockDetail = () => {
    const { stock } = useParams();
 
    const sampleDataUp = [0, 20, 215, 50, 460, 180, 0, -280, 10, 20, -880, 800, 50, 510, 50, 0, 90, 0, 11, 0];
+   const scrollTop = () => {
+      const element = document.getElementById('stockmarket_tab');
+      if (element) {
+         element.scrollIntoView({ behavior: 'smooth' });
+      }
+   }
 
    return (
       <div className="stock_detail_page">
@@ -147,25 +154,66 @@ const StockDetail = () => {
                </div>
             </div>
          </div>
-         <div className="stockmarket_tab_section">
+         <div className="stockmarket_tab_section" id="stockmarket_tab">
             <Tabs
                defaultActiveKey="marketcap"
                className="commontab_section"
+               onSelect={scrollTop}
             >
                <Tab eventKey="marketcap" title="Market Cap">
                   <div className="tab_content">
                      <h3>Market capitalization of <i className='text-capitalize text-primary'> {stock}</i> (MSFT)</h3>
                      <h6>Market cap: <span className='text-bg-warning ps-1 pe-1'>₹267.001 Trillion</span></h6>
-                     <p>As of May 2025 Microsoft has a market cap of ₹267.001 Trillion. This makes Microsoft the world's 2nd most valuable company by market cap according to our data. The market capitalization, commonly called market cap, is the total market value of a publicly traded company's outstanding shares and is commonly used to measure how much a company is worth.</p>
+                     <p>As of May 2025 <strong> Microsoft</strong> has a market cap of <strong> ₹267.001 Trillion.</strong> This makes Microsoft the world's 2nd most valuable company by market cap according to our data. The market capitalization, commonly called market cap, is the total market value of a publicly traded company's outstanding shares and is commonly used to measure how much a company is worth.</p>
+                     <div className="">
+                        <h3>Market cap history of Microsoft from 1996 to 2025</h3>
+                        <MarketCapChart />
+                     </div>
                   </div>
                </Tab>
                <Tab eventKey="Revenue" title="Revenue">
+                  <div className="tab_content">
+                     <h3>Revenue for <i className='text-capitalize text-primary'> {stock}</i> (MSFT)</h3>
+                     <h6>Revenue in 2024 (TTM): <span className='text-bg-warning ps-1 pe-1'>₹22.017 Trillion</span></h6>
+                     <p>According to <strong> Microsoft's</strong> latest financial reports the company's current revenue (TTM ) is <strong> ₹22.036 Trillion. </strong> an increase over the revenue in the year 2023 that were of <strong> ₹18.946 Trillion. </strong> The revenue is the total amount of income that a company generates by the sale of goods or services. Unlike with the earnings no expenses are subtracted.</p>
+                     <div className="">
+                        <h3>Revenue history for Microsoft from 1996 to 2024</h3>
+                        <MarketCapChart />
+                     </div>
+                  </div>
                </Tab>
                <Tab eventKey="Earnings" title="Earnings">
+                  <div className="tab_content">
+                     <h3>Earnings for <i className='text-capitalize text-primary'> {stock}</i> (MSFT)</h3>
+                     <h6>Earnings in 2024 (TTM): <span className='text-bg-warning ps-1 pe-1'>₹9.553 Trillion</span></h6>
+                     <p>According to <strong> Microsoft's</strong> latest financial reports the company's current earnings are <strong> ₹261.80 Billion. </strong> , an increase over its 2023 earnings that were of ₹8.519 Trillion. The earnings displayed on this page are the earnings before interest and taxes or simply <strong> EBIT</strong>.</p>
+                     <div className="">
+                        <h3>Earnings history for Microsoft from 1984 to 2024</h3>
+                        <MarketCapChart />
+                     </div>
+                  </div>
                </Tab>
                <Tab eventKey="Price history" title="Price history">
+                  <div className="tab_content">
+                     <h3>Stock price history for <i className='text-capitalize text-primary'> {stock}</i> (MSFT)</h3>
+                     <p className='mb-1'>Highest end of day price: <strong> ₹39,356 INR</strong> on 2024-07-05</p>
+                     <p className='mb-1'>Lowest end of day price: <strong> ₹7.60 INR</strong> on 1986-03-24</p>
+                     <div className="">
+                        <h3>Stock price history of Microsoft from 1986 to 2025</h3>
+                        <MarketCapChart />
+                     </div>
+                  </div>
                </Tab>
                <Tab eventKey="P/E ratio" title="P/E ratio">
+                  <div className="tab_content">
+                     <h3>P/E ratio for <i className='text-capitalize text-primary'> {stock}</i> (MSFT)</h3>
+                     <h6>P/E ratio as of May 2025 (TTM): <span className='text-bg-warning ps-1 pe-1'>37.6</span></h6>
+                     <p>According to <strong> Microsoft's</strong> latest financial reports and stock price the company's current price-to-earnings ratio (TTM) is 37.5565. At the end of 2023 the company had a P/E ratio of <strong> 33.9.</strong></p>
+                     <div className="">
+                        <h3>P/E ratio history for Microsoft from 2001 to 2024</h3>
+                        <MarketCapChart />
+                     </div>
+                  </div>
                </Tab>
                <Tab eventKey="P/S ratio" title="P/S ratio">
                </Tab>

@@ -45,8 +45,8 @@ body.dark .language-select-btn{
    border-radius: 4px;
 }
 body.dark .language-dropdown {
-   background: #37383e;
-   border-color: transparent;
+   background: #000;
+   border-color: #3c404c;
 }
 .language-dropdown {
    position: absolute;
@@ -79,7 +79,7 @@ body.dark .language-dropdown {
    background: #f0f0f0;
 }
 body.dark .language-dropdown button:hover{
-   background: #323232;
+   background: rgb(235 235 235 / 14%);
 }
 body.dark .language-dropdown button {
    color: #fff;
