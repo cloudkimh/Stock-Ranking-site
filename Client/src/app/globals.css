@@ -33,10 +33,15 @@ body {
   height: calc(100vh - 70px);
   overflow: auto;
 }
+body.dark .form-select{
+  background-color:#27334b;
+  border-color: #27334b;
+  color: #fff;
+}
 body.dark .cm_table tr td,
 body.dark .cm_table tr th {
   color: #fff;
-  background-color: #242424;
+  background-color: #27334b;
 }
 .cm_table tr td,
 .cm_table tr th {
@@ -52,12 +57,12 @@ body.dark .cm_table tr th {
   background-color: #efefef;
 }
 body.dark .cm_table tr:nth-child(even) td{
-  background-color: #202020 !important;
+  background-color: #27334b47 !important;
 }
 body.dark .cm_table tr th button,
 body.dark .cm_table tr th button span{
   color: #fff;
-  background-color: #242424;
+  background-color: #27334b;
 }
 .cm_table tr th button,
 .cm_table tr th button span{
@@ -69,8 +74,8 @@ body.dark .cm_table tr th button span{
   font-weight: 500;
 }
 body.dark .cm_table tr td {
-  background-color: #000;
-  border-bottom: 1px solid #242424;
+  background-color: #0d1421;
+  border-bottom: 1px solid #27334b;
 }
 .cm_table tr td {
   background-color: #fff;

@@ -9,13 +9,15 @@
    max-width: 400px;
    background-color: #fff;
 }
-body.dark .search-box  {
+body.dark .search-box {
    border-color: #000;
-   background-color: #303030;
+   background-color: #27334b;
 }
-
-body.dark .search-input  {
-   background-color: #303030;
+body.dark .search-input::placeholder {
+   color: #b5b5b5;
+}
+body.dark .search-input {
+   background-color: #27334b;
    color: #FFF;
 }
 .search-input {
