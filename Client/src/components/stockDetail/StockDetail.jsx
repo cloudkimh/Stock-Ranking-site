@@ -6,53 +6,82 @@ import RankImage from '../../../public/assets/icons/rank.png'
 import { useParams } from 'next/navigation';
 import './stockdetail.css'
 import { Activity, BrainCircuit, ChartColumnDecreasing, ChartPie, Cpu, DollarSign, FileCode2, Gamepad2, Globe } from 'lucide-react';
+import MiniLineChart from '../Charts/MiniLineChart';
+import HexagonRadarChart from '../Charts/HexagonRadarChart';
 
 const StockDetail = () => {
    const { stock } = useParams();
 
+   const sampleDataUp = [0, 20, 215, 50, 460, 180, 0, -280, 10, 20, -880, 800, 50, 510, 50, 0, 90, 0, 11, 0];
+
    return (
-      <div className="stock-detail-page">
+      <div className="stock_detail_page">
+         <div className="w-100 mb-3">
+            <div className="stockheader_wrapper">
+               <div className="d-flex align-items-center gap-2">
+                  <Image src={'https://upload.wikimedia.org/wikipedia/commons/2/25/Microsoft_icon.svg'} width={35} height={35} alt='linkicon' />
+                  <h1 className='stocktitle'>{stock} </h1>
+               </div>
+               <div className="rank_block position-relative">
+                  <span>1</span>
+                  <Image src={RankImage} width={50} height={50} alt='rank' />
+               </div>
+               <a href="/" className="webglobe">
+                  <Globe width={27} color='dodgerblue' />
+                  <p className=''>Website</p>
+               </a>
+            </div>
+            <div className="stock_bothwrapper">
+               <div className="w-50">
+                  {/* <h5 className='text-capitalize mb-0 mt-3'><i>About company</i></h5> */}
+                  <p className='stock_info_p'>
+                     <span className='text-capitalize text-primary'><i>{stock}</i></span> is an American company that develops and distributes software and services such as: a search engine (Bing), cloud solutions and the computer operating system Windows.
+                  </p>
+               </div>
+               <div className="w-50 stockinnerInfo">
+                  <div className="stockwrap">
+                     <h4>#1</h4>
+                     <span>Rank</span>
+                  </div>
+                  <div className="stockwrap">
+                     <h4 className='text-success'>₹170.287 T</h4>
+                     <span>Marketcap</span>
+                  </div>
+                  <div className="stockwrap">
+                     <h4>United States</h4>
+                     <span>Country</span>
+                  </div>
+                  <div className="stockwrap">
+                     <h4>₹16,040</h4>
+                     <span>Share price</span>
+                  </div>
+               </div>
+            </div>
+            <div className="">
+               <h5 className='text-capitalize mb-0 mt-3'><i>Category </i></h5>
+               <div className="categorybox_wrap">
+                  <span className='categorybox'>
+                     <FileCode2 width={20} />
+                     Software
+                  </span>
+                  <span className='categorybox'>
+                     <Cpu width={20} />
+                     Tech
+                  </span>
+                  <span className='categorybox'>
+                     <BrainCircuit width={20} />
+                     AI
+                  </span>
+                  <span className='categorybox'>
+                     <Gamepad2 width={20} />
+                     Video games
+                  </span>
+               </div>
+            </div>
+         </div>
          <div className="stock_inner_row">
             <div className="w-50">
-               <div className="d-flex align-items-center gap-4">
-                  <div className="d-flex align-items-center gap-2">
-                     <Image src={'https://upload.wikimedia.org/wikipedia/commons/2/25/Microsoft_icon.svg'} width={35} height={35} alt='linkicon' />
-                     <h1 className='stocktitle'>{stock} </h1>
-                  </div>
-                  <div className="rank_block position-relative">
-                     <span>1</span>
-                     <Image src={RankImage} width={50} height={50} alt='rank' />
-                  </div>
-                  <a href="/" className="webglobe">
-                     <Globe width={27} color='dodgerblue' />
-                     <p className=''>Website</p>
-                  </a>
-               </div>
-               <h5 className='text-capitalize mb-0 mt-3'><i>About {stock} </i></h5>
-               <p className='stock_info_p'>
-                  <strong className='text-capitalize'>{stock}</strong> is an American company that develops and distributes software and services such as: a search engine (Bing), cloud solutions and the computer operating system Windows.
-               </p>
-               <div className="">
-                  <h5 className='text-capitalize mb-0 mt-3'><i>Category </i></h5>
-                  <div className="categorybox_wrap">
-                     <span className='categorybox'>
-                        <FileCode2 width={20} />
-                        Software
-                     </span>
-                     <span className='categorybox'>
-                        <Cpu width={20} />
-                        Tech
-                     </span>
-                     <span className='categorybox'>
-                        <BrainCircuit width={20} />
-                        AI
-                     </span>
-                     <span className='categorybox'>
-                        <Gamepad2 width={20} />
-                        Video games
-                     </span>
-                  </div>
-               </div>
+               <HexagonRadarChart />
             </div>
             <div className="stockbox_wrapper w-75">
                <div className="stockbox">
@@ -64,7 +93,8 @@ const StockDetail = () => {
                      <h2 className='stocknumber'>$2850.0B</h2>
                      <span className='rankname'>Rank 1</span>
                   </div>
-                  <p className='mb-0'>Total market value of outstanding shares</p>
+                  <p className='mb-2'>Total market value of outstanding shares</p>
+                  <MiniLineChart data={sampleDataUp} color="dodgerblue" />
                </div>
                <div className="stockbox">
                   <h4 className="stock_inf_name">
@@ -75,7 +105,8 @@ const StockDetail = () => {
                      <h2 className='stocknumber'>$394.3B</h2>
                      <span className='rankname'>Rank 3</span>
                   </div>
-                  <p className='mb-0'>Annual income from sales</p>
+                  <p className='mb-2'>Annual income from sales</p>
+                  <MiniLineChart data={sampleDataUp} color="#00E396" />
                </div>
                <div className="stockbox">
                   <h4 className="stock_inf_name">
@@ -86,7 +117,8 @@ const StockDetail = () => {
                      <h2 className='stocknumber'>$123.1B</h2>
                      <span className='rankname'>Rank 1</span>
                   </div>
-                  <p className='mb-0'>Profit from core business operations</p>
+                  <p className='mb-2'>Profit from core business operations</p>
+                  <MiniLineChart data={sampleDataUp} color="red" />
                </div>
                <div className="stockbox">
                   <h4 className="stock_inf_name">
@@ -97,7 +129,9 @@ const StockDetail = () => {
                      <h2 className='stocknumber'>30.5</h2>
                      <span className='rankname'>Rank 26</span>
                   </div>
-                  <p className='mb-0'>Price-to-Earnings Ratio</p>
+                  <p className='mb-2'>Price-to-Earnings Ratio</p>
+                  <MiniLineChart data={sampleDataUp} color="#00E396" />
+
                </div>
                <div className="stockbox">
                   <h4 className="stock_inf_name">
@@ -108,7 +142,8 @@ const StockDetail = () => {
                      <h2 className='stocknumber'>49.6</h2>
                      <span className='rankname'>Rank 6</span>
                   </div>
-                  <p className='mb-0'>Price-to-Book Ratio</p>
+                  <p className='mb-2'>Price-to-Book Ratio</p>
+                  <MiniLineChart data={sampleDataUp} color="red" />
                </div>
             </div>
          </div>
