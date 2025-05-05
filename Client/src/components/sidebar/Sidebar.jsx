@@ -1,13 +1,23 @@
-'use client'
-import './sidebar.css'
-import { Lightbulb, House, BadgeDollarSign, PackagePlus, ShieldEllipsis, Rocket, ShieldCheck, CalendarDays, HandHeart, Goal } from "lucide-react";
+'use client';
+import './sidebar.css';
+import {
+   Lightbulb, House, BadgeDollarSign, PackagePlus, ShieldEllipsis,
+   Rocket, ShieldCheck, CalendarDays, HandHeart, Goal
+} from "lucide-react";
 import Image from 'next/image';
-import logo from '../../../public/assets/icons/logo.png'
+import logo from '../../../public/assets/icons/logo.png';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+
 
 const Sidebar = () => {
-
    const pathname = usePathname();
+   const t = useTranslations();
+
+   // Get the locale from the pathname (e.g., /en/discovery -> 'en')
+   const locale = pathname.split('/')[1];
+
 
    const navLinks = [
       { href: '/', icon: <House size={25} />, label: 'Home' },
@@ -26,25 +36,30 @@ const Sidebar = () => {
    return (
       <div className="sidebar_container">
          <div className="main_logo">
-            <a href="/">
-               <Image src={logo} width={170} height={52} alt="logo"/>
-            </a>
+            <Link href={`/${locale}`}>
+               <Image src={logo} width={170} height={52} alt="logo" />
+            </Link>
          </div>
          <div className="sidebar_inner scrollbar-hide">
             <nav className="navlist">
                <ul className="p-0">
-                  {navLinks.map(({ href, icon, label }, idx) => (
-                     <li key={idx}>
-                        <a href={href} className={pathname === href ? 'active' : ''}>
-                           {icon}
-                           <span>{label}</span>
-                        </a>
-                     </li>
-                  ))}
+                  {navLinks.map(({ href, icon, label }, idx) => {
+                     const fullHref = `/${locale}${href}`;
+                     const isActive = pathname === fullHref;
+
+                     return (
+                        <li key={idx}>
+                           <Link href={fullHref} className={isActive ? 'active' : ''}>
+                              {icon}
+                              <span>{t(label)}</span>
+                           </Link>
+                        </li>
+                     );
+                  })}
                </ul>
             </nav>
          </div>
-      </div >
+      </div>
    );
 };
 
