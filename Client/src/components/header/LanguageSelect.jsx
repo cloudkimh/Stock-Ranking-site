@@ -1,30 +1,39 @@
+'use client';
 import React, { useState } from 'react';
-import USA from '../../../public/assets/flags/USA.svg'
-import DE from '../../../public/assets/flags/DE.svg'
-import KR from '../../../public/assets/flags/KR.svg'
+import { usePathname, useRouter } from 'next/navigation';
+import USA from '../../../public/assets/flags/USA.svg';
+import DE from '../../../public/assets/flags/DE.svg';
+import KR from '../../../public/assets/flags/KR.svg';
 import Image from 'next/image';
 import { ChevronDown } from 'lucide-react';
 
 const languages = [
    { code: 'en', name: 'English', flag: USA },
-   { code: 'kr', name: 'Korean', flag: KR },
-   { code: 'de', name: 'German', flag: DE },
+   { code: 'ko', name: 'Korean', flag: KR },
 ];
 
 const LanguageSelect = () => {
    const [selectedLanguage, setSelectedLanguage] = useState(languages[0]);
+   const router = useRouter();
+   const pathname = usePathname(); // e.g., /en/stock or /kr/stock
 
    const handleLanguageChange = (language) => {
       setSelectedLanguage(language);
+
+      const segments = pathname.split('/');
+      segments[1] = language.code; // Replace locale segment
+      const newPath = segments.join('/');
+
+      router.push(newPath); // Navigate to new locale route
    };
 
+   console.log('Selected Language:', selectedLanguage);
    return (
       <div className="language-select">
          <button className="language-select-btn">
             <Image src={selectedLanguage.flag} alt={selectedLanguage.name} width={20} height={20} />
             <span>{selectedLanguage.name}</span>
-            <ChevronDown size={18} fill="transparent" style={{color:"#c7bcbc"}} />
-
+            <ChevronDown size={18} fill="transparent" style={{ color: "#c7bcbc" }} />
          </button>
          <ul className="language-dropdown">
             {languages.map((language) => (
