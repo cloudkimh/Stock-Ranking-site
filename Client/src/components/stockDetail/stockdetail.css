@@ -9,13 +9,8 @@
    justify-content: space-between;
 }
 .stock_info_p {
-   padding: 10px 15px;
-   border: 1px solid #ccc;
-   border-radius: 10px;
    margin-top: 5px;
-}
-body.dark .stock_info_p{
-   border-color: #404040;
+   color: #a7a5a5;
 }
 .webglobe{
    margin-left: auto;
@@ -64,7 +59,7 @@ body.dark .webglobe:hover{
    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
 }
 body.dark .stockbox {
-   background-color: rgba(145, 145, 145, 0.071);
+   background-color: rgba(34, 37, 49, 0.58);
 }
 .stocknumber{
    font-size: 30px;
@@ -117,11 +112,53 @@ body.dark .stock_inf_name{
    flex-wrap: wrap;
 }
 body.dark .stockmarket_tab_section{
-   background-color: rgba(145, 145, 145, 0.071);
+   background-color: rgba(34, 37, 49, 0.58);
 }
 .stockmarket_tab_section{
    margin-top: 50px;
    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
    padding: 20px;
    border-radius: 8px;
+}
+.stockheader_wrapper{
+   display: flex;
+   align-items: center;
+   margin-bottom: 10px;
+}
+.stockinnerInfo{
+   display: flex;
+   justify-content: space-between;
+}
+.stock_bothwrapper{
+   display: flex;
+   align-items: start;
+}
+.stockwrap{
+   width: 40%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding: 0 20px;
+}
+body.dark .stockwrap:nth-child(2){
+   border-left: 1px solid #3c404c;
+   border-right: 1px solid #3c404c;
+}
+body.dark .stockwrap:nth-child(3){
+   border-right: 1px solid #3c404c;
+}
+.stockwrap:nth-child(2){
+   border-left: 1px solid rgba(167, 165, 165, 0.439);
+   border-right: 1px solid rgba(167, 165, 165, 0.439);
+}
+.stockwrap:nth-child(3){
+   border-right: 1px solid rgba(167, 165, 165, 0.439);
+}
+.stockwrap h4{
+   font-weight: 600;
+}
+.stockwrap span{
+   font-size: 16px;
+   font-weight: 500;
+   color: #a7a5a5;
 }

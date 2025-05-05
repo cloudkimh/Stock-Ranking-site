@@ -23,15 +23,15 @@ body.dark .sidebar_toggle_btn {
    color: #fff;
 }
 body.dark .header_wrapper {
-   background-color: var(--background);
-   border-bottom: 1px solid #393939;
+   background-color: #0d1421;
+   border-bottom: 1px solid #3c404c;
 }
 .language-select {
    position: relative;
    display: inline-block;
 }
 body.dark .language-select-btn{
-   border-color: #393939;
+   border-color: #3c404c;
    color: #fff;
 }
 .language-select-btn {
