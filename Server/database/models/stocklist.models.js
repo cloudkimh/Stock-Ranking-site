@@ -88,6 +88,17 @@ export default (sequelize, DataTypes) => {
         createdAt: 'created_at',
         updatedAt: 'updated_at',
         underscored: false, // optional
+        indexes: [
+            {
+                fields: ['id'],
+            },
+            {
+                fields: ['name'],
+            },
+            {
+                fields: ['code'],
+            }
+        ]
     });
 
     StocklistModel.associate = (models) => {

@@ -1,5 +1,30 @@
 import statusCode from 'http-status-codes';
 import { throwError } from './error.handle.js';
+import { query } from 'express-validator';
+
+export const paginationValidator = [
+	query('page')
+		.optional()
+		.trim()
+        // .notEmpty().withMessage('Page is required')
+		.isInt({ min: 1 }).withMessage('Page must be number greater than 0'),
+
+	query('limit')
+		.optional()
+		.trim()
+        // .notEmpty().withMessage('Limit is required')
+		.isInt({ min: 1 }).withMessage('Limit must be number greater than 0'),
+
+    query('start_date')
+		.optional()
+		.trim()
+		.isISO8601().withMessage('Start date is invalid'),
+
+	query('end_date')
+		.optional()
+		.trim()
+		.isISO8601().withMessage('End date is invalid'),
+];
 
 export const atLeastOneFieldRequired = (fieldsToCheck) => {
     return (value, { req }) => {
@@ -14,14 +39,14 @@ export const atLeastOneFieldRequired = (fieldsToCheck) => {
 };
 
 export const rejectExtraFields = (allowedFields = []) => {
-
 	let defaultField = "timestamp";
 	allowedFields.push(defaultField);
 	
 	return (req, res, next) => {
-		const extraFields = Object.keys(req.body).filter(
+		const extraFields = Object.keys(req?.body || req?.query).filter(
 			(key) => !allowedFields.includes(key)
 		);
+		
 		if (extraFields.length > 0) {
 			// Use your custom throwError function or pass error to next()
 			const message = 'Please provide valid input';
