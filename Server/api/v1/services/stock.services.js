@@ -1,25 +1,61 @@
 import statusCode from 'http-status-codes';
-import { encryptCBC, decryptCBC } from '../../../global/encrypt_decrypt.handle.js';
 import { throwError } from '../../../global/error.handle.js';
-import { isEmpty, paginate, pagination } from '../../../global/common.helpers.js';
-import { ROLE } from '../../../constant/index.js';
+import { isEmpty, paginate, pagination, queryFilter } from '../../../global/common.helpers.js';
 import { models } from '../../../database/models/index.js';
 const { StocklistModel, StockinfoModel, StockdetailModel } = models;
 
 export const stockListServices = async (req, res) => {
     try {
-        let page = parseInt(req?.query?.page) || 1;
-        let limit = parseInt(req?.query?.limit) || 10;
+        const { page, limit, offset, where } = await queryFilter({
+			query: req?.query,
+			strSearchableFields: ['name', 'code'], // string filter column with search value
+  			intSearchFields: [''], // integer filter column with search value
+			dateField: 'created_at' // Date filter
+		});
 
-        let { code } = req.query;
-
-        // filter
-        let where = {};
-        if(code) {
-            where.code = code;
+        let options = {
+            where,
+            // attributes: [],
+            include: [
+                {
+                    model: StockinfoModel,
+                    as: 'stock_info',
+                    required: false,
+                },
+                // {
+                //     model: StockdetailModel,
+                //     as: 'stock_detail',
+                //     required: false,
+                // }
+            ],
+            order: [
+                ['created_at', 'DESC'],
+                ['updated_at', 'DESC']
+            ],
+            offset,
+            limit,
+            // raw: true,
+            // logging: console.log,
         }
 
-        let { offset } = await paginate(page, limit);
+        let stockListData = await StocklistModel.findAndCountAll(options);
+        const result = await pagination(stockListData, page, limit);
+        return result;
+    } catch(error) {
+        throwError(error?.statusCode, error?.message);    
+    }
+};
+
+export const stockDetailsServices = async (req, res) => {
+    try {
+        let { id, code } = req?.query;
+
+        const { page, limit, offset, where } = await queryFilter({
+			query: req?.query,
+			strSearchableFields: [], // string filter column with search value
+  			intSearchFields: [], // integer filter column with search value
+			dateField: 'created_at' // Date filter
+		});
 
         let options = {
             where,
@@ -40,19 +76,14 @@ export const stockListServices = async (req, res) => {
                 ['created_at', 'DESC'],
                 ['updated_at', 'DESC']
             ],
-            offset,
-            limit,
-            // raw: true
+            // raw: true,
+            // logging: console.log,
         }
 
-        let stockListData = await StocklistModel.findAndCountAll(options);
-
-        const result = await pagination(stockListData, page, limit);
-
-        // if(isEmpty(result)) {
-        //     throwError(statusCode.NOT_FOUND, "Account not found")
-        // }
-
+        let result = await StocklistModel.findOne(options);
+        if(isEmpty(result)) {
+            throwError(statusCode.BAD_REQUEST, "Stock details not found")    
+        }
         return result;
     } catch(error) {
         throwError(error?.statusCode, error?.message);    
