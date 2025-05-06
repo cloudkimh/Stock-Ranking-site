@@ -25,7 +25,6 @@ const StockListing = () => {
          }
          const response = await stockServices.stockList(payload);
          const { data, message, error } = response;
-         console.log("data", data)
          if (data) {
             setStockData(data?.data?.rows);
             setPage(data?.data?.page);

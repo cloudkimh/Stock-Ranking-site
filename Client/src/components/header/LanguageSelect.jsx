@@ -1,8 +1,7 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import USA from '../../../public/assets/flags/USA.svg';
-import DE from '../../../public/assets/flags/DE.svg';
 import KR from '../../../public/assets/flags/KR.svg';
 import Image from 'next/image';
 import { ChevronDown } from 'lucide-react';
@@ -13,27 +12,34 @@ const languages = [
 ];
 
 const LanguageSelect = () => {
-   const [selectedLanguage, setSelectedLanguage] = useState(languages[0]);
    const router = useRouter();
-   const pathname = usePathname(); // e.g., /en/stock or /kr/stock
+   const pathname = usePathname(); // e.g., /en/stock or /ko/stock
+   const [selectedLanguage, setSelectedLanguage] = useState(languages[0]);
+
+   // Sync selected language with current locale in URL
+   useEffect(() => {
+      const currentLocale = pathname.split('/')[1]; // get "en" or "ko"
+      const matchedLang = languages.find((lang) => lang.code === currentLocale);
+      if (matchedLang) {
+         setSelectedLanguage(matchedLang);
+      }
+   }, [pathname]);
 
    const handleLanguageChange = (language) => {
-      setSelectedLanguage(language);
+      if (language.code === selectedLanguage.code) return;
 
       const segments = pathname.split('/');
-      segments[1] = language.code; // Replace locale segment
+      segments[1] = language.code; // Replace the locale segment
       const newPath = segments.join('/');
-
       router.push(newPath); // Navigate to new locale route
    };
 
-   console.log('Selected Language:', selectedLanguage);
    return (
       <div className="language-select">
          <button className="language-select-btn">
             <Image src={selectedLanguage.flag} alt={selectedLanguage.name} width={20} height={20} />
             <span>{selectedLanguage.name}</span>
-            <ChevronDown size={18} fill="transparent" style={{ color: "#c7bcbc" }} />
+            <ChevronDown size={18} style={{ color: "#c7bcbc" }} />
          </button>
          <ul className="language-dropdown">
             {languages.map((language) => (
