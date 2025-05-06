@@ -8,8 +8,13 @@ module.exports = {
         const tableName = TABLE_NAME?.tbl_stock_list || "tbl_stock_list";
 
         const modifications = async (columns) => {
-            // Add new columns if they don't already exist
-            
+            await queryInterface.sequelize.transaction(async (t) => {
+                return await Promise.all([
+                  !("category" in columns) && queryInterface.addColumn(tableName, "category",
+                    { type: Sequelize.STRING, defaultValue: null, allowNull: true },
+                  ), 
+                ]);
+            });
         };
 
         const fields = {
@@ -75,6 +80,11 @@ module.exports = {
             nxtEnable: {
                 type: Sequelize.STRING,
                 allowNull: true,
+            },
+            category: {
+                type: Sequelize.STRING,
+                allowNull: true,
+                defaultValue: null,
             },
             created_at: {
                 type: Sequelize.DATE,

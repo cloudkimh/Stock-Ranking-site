@@ -56,6 +56,7 @@ export const stockListCronJob = async (mrkt_tp = "0") => {
       const stock_list_ary = [];
       for (const stock of stockData) {
          stock_list_ary.push({
+            category: mrkt_tp === "0" ? "KOSPI" : "KOSDAQ",
             code: stock.code,
             name: stock.name,
             listCount: stock.listCount,
@@ -88,7 +89,8 @@ export const stockListCronJob = async (mrkt_tp = "0") => {
             "upSizeName",
             "companyClassName",
             "orderWarning",
-            "nxtEnable"
+            "nxtEnable",
+            "category"
          ]
       });
 
