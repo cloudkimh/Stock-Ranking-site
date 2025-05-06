@@ -16,18 +16,21 @@ const StockListing = () => {
    const [totalCount, setTotalCount] = useState(0);
 
 
-   const fetchStockData = async () => {
+   const fetchStockData = async (page, limit) => {
       try {
          setLoading(true);
-         const response = await stockServices.stockList();
+         let payload = {
+            page: page,
+            limit: limit
+         }
+         const response = await stockServices.stockList(payload);
          const { data, message, error } = response;
-         console.log("data", data)
          if (data) {
             setStockData(data?.data?.rows);
-            setPage(data.page);
-            setLimit(data.limit);
-            setTotalPages(data.totalPages);
-            setTotalCount(data.count);
+            setPage(data?.data?.page);
+            setLimit(data?.data.limit);
+            setTotalPages(data?.data.totalPages);
+            setTotalCount(data?.data.count);
          } else {
             setError(message || error || 'Failed to fetch stock data');
          }
@@ -40,9 +43,10 @@ const StockListing = () => {
    };
 
 
-
    useEffect(() => {
-      fetchStockData(page, limit);
+      (async () => {
+         await fetchStockData(page, limit);
+      })();
    }, [page, limit]);
 
 
