@@ -12,3 +12,6 @@ export const AUTHENTICATION_TOKEN_SETTINGS = {
 
 // Cron setting
 export const IS_CRON_JOB_START = true;
+
+// Redis setting
+export const IS_REDIS_START = true;

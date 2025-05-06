@@ -2,13 +2,13 @@ import { query, validationResult } from 'express-validator';
 import { throwError, InvalidParameter } from '../../../../global/error.handle.js';
 import { atLeastOneFieldRequired, rejectExtraFields } from '../../../../global/validation.handle.js';
 
-let fieldsToCheckAry = ['id', 'code']; 
 let allowedFieldsAry = ['id', 'code']; 
+let fieldsToCheckAry = ['id', 'code']; 
 
 export const stockDetailsValidator = [
     rejectExtraFields(allowedFieldsAry), // Max allow field
-    // query().custom(atLeastOneFieldRequired(fieldsToCheckAry)), // Min allow field
-    //    ...paginationValidator,
+    query().custom(atLeastOneFieldRequired(fieldsToCheckAry)), // Min allow field
+    // ...paginationValidator,
 
     query('id')
         .optional()

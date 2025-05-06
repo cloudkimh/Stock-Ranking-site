@@ -23,56 +23,54 @@ export const verifyJWToken = async (token) => {
 /* *** JWT enddd *** */
 
 /* *** build dynamic where caluse for sequelize query - start *** */
-export const queryFilter = async ({ query = {}, strSearchableFields = [], intSearchFields = [], dateField = 'created_at' }) => {
+export const queryFilter = async ({ query = {}, searchableFields = [], dateField = 'created_at' }) => {
     const page = parseInt(query.page) || 1;
     const limit = parseInt(query.limit) || 10;
     const offset = (page - 1) * limit;
     const { search, start_date, end_date, ...filters } = query;
-    // console.log("filter request ===>> ", {...query, strSearchableFields, intSearchFields, dateField});
+    // console.log("filter request ===>> ", {...query, searchableFields, dateField});
     
     const where = {};
     
-    // Apply dynamic filters (excluding known keys)
-    const notIncludeInFilterAry = ['page', 'limit', 'search', 'start_date', 'end_date', ...strSearchableFields, ...intSearchFields];
+    // Apply dynamic filters (excluding known keys) - WHERE
+    searchableFields = query?.search ? searchableFields : [];
+    const notIncludeInFilterAry = ['page', 'limit', 'search', 'start_date', 'end_date', ...searchableFields];
     for (const key in filters) {
-      if (!notIncludeInFilterAry.includes(key) && filters[key]) {
-        where[key] = filters[key];
-      }
+        if (!notIncludeInFilterAry.includes(key) && filters[key]) {
+            where[key] = filters[key];
+        }
     }
-  
-    // Apply global search filter
-    /*if (search && strSearchableFields.length > 0) {
-      where[Op.or] = strSearchableFields.map(field => ({
-        [field]: { [Op.iLike]: `%${search}%` }
-      }));
-    }*/
-    if (search && strSearchableFields.length > 0) {
-        where[Op.or] = strSearchableFields.map(field => {
-        if (intSearchFields.includes(field)) {
-            return sequelizeWhere(
+    
+    // Apply dynamic search filter - SEARCH
+    if (search && searchableFields.length > 0) {
+        where[Op.or] = searchableFields.map(field => 
+            sequelizeWhere(
                 cast(col(field), 'TEXT'),
                 { [Op.iLike]: `%${search}%` }
-            );
-        }
-        return {
-            [field]: { [Op.iLike]: `%${search}%` }
-        };
-        });
+            )
+        );
     }
 
-    // Date range filter
+    // Apply dynaic Date range filter - DATE
     if (start_date || end_date) {
         where[dateField] = {};
         if (start_date) where[dateField][Op.gte] = new Date(start_date);
         if (end_date) where[dateField][Op.lte] = new Date(end_date);
     }
+
+    // Apply default order by clause - ORDER BY
+    let order = [
+        ['created_at', 'DESC'],
+        ['updated_at', 'DESC']
+    ];
     
 	// console.log("filter ===>> ", page, limit, offset, where);
     return {
-      page,
-      limit,
-      offset,
-      where
+        page,
+        limit,
+        offset,
+        where,
+        order
     };
 }
 /* *** build dynamic where caluse for sequelize query - enddd *** */
