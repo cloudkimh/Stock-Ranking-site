@@ -1,9 +1,31 @@
 .userbtn {
-   background-color: #e7e7e7;
-   border-radius: 50px;
-   padding: 8px;
+   overflow: hidden;
+   padding: 0px;
    border: unset;
-   color: #858585;
+   display: flex;
+   background-color: transparent;
+}
+.userinfo{
+   margin-left: 10px;
+}
+.userinfo h6 {
+   margin: 0;
+   font-weight: 600;
+}
+.userinfo p {
+   font-size: 14px;
+   margin: 0;
+   text-align: left;
+}
+.userbtn .usericon {
+   width: 40px;
+   border-radius: 50px;
+   height: 40px;
+   overflow: hidden;
+}
+.userbtn img {
+   width: 100%;
+   height: 100%;
 }
 .userbtn_wrapper {
    margin-left: auto;
@@ -75,7 +97,7 @@
    justify-content: flex-start;
 }
 .list .logoutbtn:active {
-   color: #fff;
+   color: #000;
 }
 .username_block {
    color: #000;
@@ -87,7 +109,7 @@
    align-items: center;
    margin-bottom: 5px;
 }
-body.dark .username_block{
+body.dark .username_block {
    background-color: rgb(143 143 143 / 37%);
 }
 .username_block p {
@@ -109,7 +131,7 @@ body.dark .userdropdown {
    background-color: #000;
 }
 body.dark .userbtn {
-   background-color: #323642;
+   background-color: transparent;
    color: #fff;
    border-color: #afafaf;
 }

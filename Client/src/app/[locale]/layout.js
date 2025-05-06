@@ -9,6 +9,7 @@ import { NextIntlClientProvider } from 'next-intl';
 // Import your layout components
 import Sidebar from '../../components/sidebar/Sidebar';
 import Header from '../../components/header/Header';
+import LoaderUI from '@/components/Loader/LoaderUI';
 
 
 export default function LocaleLayout({ children, params }) {
@@ -39,7 +40,7 @@ export default function LocaleLayout({ children, params }) {
    // Show loading state until translations are ready
    if (!isReady || !messages) {
       return (
-         <div>Loading translations...</div>
+         <div className='main_loader'><LoaderUI/></div>
       );
    }
 

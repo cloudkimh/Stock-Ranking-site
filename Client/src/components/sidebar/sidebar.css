@@ -1,15 +1,19 @@
 .sidebar_container {
    width: 250px;
-   height: 100%;
+   height: calc(100vh - 30px);
    position: fixed;
-   left: 0;
-   top: 0;
-   background-color: #0d1421;
+   border-radius: 15px;
+   left: 15px;
+   top: 15px;
+   background-color: #fff;
+   overflow: hidden;
    transition: all 0.4s;
    border-right: 1px solid transparent;
+   box-shadow: rgba(37, 83, 185, 0.1) 0px 2px 6px;
 }
 body.dark .sidebar_container {
-   border-right-color: #3c404c;
+   background-color: #111c2d;
+   box-shadow: rgb(145 158 171 / 30%) 0px 0px 2px 0px, rgb(145 158 171 / 2%) 0px 12px 24px -4px;
 }
 .sidebar_toggle .sidebar_container {
    left: -250px;
@@ -20,8 +24,6 @@ body.dark .sidebar_container {
 }
 .main_logo a {
    text-decoration: none;
-   color: #fff;
-   border-bottom: 1px solid #3c404c;
    font-weight: 800;
    width: 100%;
    height: 100%;
@@ -32,6 +34,12 @@ body.dark .sidebar_container {
    justify-content: center;
    letter-spacing: 1px;
    font-size: 25px;
+}
+body.dark .main_logo a img {
+   filter: invert(0);
+}
+.main_logo a img {
+   filter: invert(1);
 }
 .menu_wrapper {
    position: relative;
@@ -66,7 +74,11 @@ body.dark .sidebar_container {
 .navlist {
    margin-top: 25px;
    padding: 0px 10px;
-   height: 100%;
+   height: calc(100vh - 125px);
+   overflow: auto;
+}
+.navlist::-webkit-scrollbar{
+   width: 0;
 }
 .navlist ul li {
    list-style: none;
@@ -76,16 +88,44 @@ body.dark .sidebar_container {
    display: flex;
    align-items: center;
    gap: 10px;
-   color: #fff;
+   color: #111c2d;
    margin-bottom: 5px;
    text-decoration: none;
-   font-size: 18px;
+   font-size: 16px;
+   position: relative;
    border-radius: 10px;
    transition: all 0.4s;
 }
-.navlist ul li a:hover {
-   background-color: rgba(255, 255, 255, 20%);
+body.dark .navlist ul li a {
+   color: #fff;
 }
-.navlist ul li a.active {
-   background-color: rgba(255, 255, 255, 20%);
+.navlist ul li a svg {
+   opacity: 0.5;
+}
+.navlist ul li a::after {
+   transition: all 0.4s;
+   position: absolute;
+   left: -10px;
+   top: 50%;
+   transform: translateY(-50%);
+   width: 0;
+   height: 100%;
+   background-color: rgb(232 245 255);
+   z-index: -1;
+   border-top-right-radius: 30px;
+   border-bottom-right-radius: 30px;
+   content: '';
+}
+body.dark .navlist ul li a::after {
+   background-color: #253662;
+}
+.navlist ul li a.active,
+.navlist ul li a:hover {
+   color: rgb(55, 163, 230);
+}
+.navlist ul li a:hover::after {
+   width: 100%;
+}
+.navlist ul li a.active::after {
+   width: 100%;
 }

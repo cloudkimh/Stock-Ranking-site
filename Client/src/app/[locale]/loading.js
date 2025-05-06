@@ -1,9 +1,9 @@
-import { Spinner } from "react-bootstrap";
+import LoaderUI from "@/components/Loader/LoaderUI";
 
 export default function Home() {
    return (
-      <div className="">
-         <Spinner />
+      <div className="page_loader">
+         <LoaderUI />
       </div>
    );
 }

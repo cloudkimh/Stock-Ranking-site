@@ -2,7 +2,8 @@
 import './sidebar.css';
 import {
    Lightbulb, House, BadgeDollarSign, PackagePlus, ShieldEllipsis,
-   Rocket, ShieldCheck, CalendarDays, HandHeart, Goal
+   Rocket, ShieldCheck, CalendarDays, HandHeart, Goal,
+   ChartCandlestick
 } from "lucide-react";
 import Image from 'next/image';
 import logo from '../../../public/assets/icons/logo.png';
@@ -21,12 +22,12 @@ const Sidebar = () => {
 
    const navLinks = [
       { href: '/', icon: <House size={25} />, label: 'Home' },
+      { href: '/stocklist', icon: <ChartCandlestick size={25} />, label: 'Stock List' },
       { href: '/discovery', icon: <Lightbulb size={25} />, label: 'Discovery' },
       { href: '/quest', icon: <Goal size={25} />, label: 'Quest' },
       { href: '/fundraising', icon: <HandHeart size={25} />, label: 'Fundraising' },
       { href: '/calendar', icon: <CalendarDays size={25} />, label: 'Calendar' },
       { href: '/wallet-scan', icon: <ShieldCheck size={25} />, label: 'Wallet Scan' },
-      { href: '/trending', icon: <ShieldCheck size={25} />, label: 'Trending' },
       { href: '/new-launch', icon: <PackagePlus size={25} />, label: 'New Launch' },
       { href: '/pre-launch', icon: <Rocket size={25} />, label: 'Pre Launch' },
       { href: '/crypto', icon: <ShieldEllipsis size={25} />, label: 'Crypto' },
@@ -37,7 +38,7 @@ const Sidebar = () => {
       <div className="sidebar_container">
          <div className="main_logo">
             <Link href={`/${locale}`}>
-               <Image src={logo} width={170} height={52} alt="logo" />
+               <Image src={logo} width={165} height={48} alt="logo" />
             </Link>
          </div>
          <div className="sidebar_inner scrollbar-hide">
@@ -46,7 +47,7 @@ const Sidebar = () => {
                   {navLinks.map(({ href, icon, label }, idx) => {
                      const fullHref = `/${locale}${href}`;
                      const isActive = pathname === fullHref;
-
+                     
                      return (
                         <li key={idx}>
                            <Link href={fullHref} className={isActive ? 'active' : ''}>
