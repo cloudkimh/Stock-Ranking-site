@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import './stocklisting.css';
 import StockRow from './StockRow';
 import StockSearch from '../StockSearchBox/StockSearch';
+import { stockServices } from '@/services/api';
 
 const StockListing = () => {
    const [stockData, setStockData] = useState([]);
@@ -13,19 +14,16 @@ const StockListing = () => {
    const [limit, setLimit] = useState(10);
    const [totalPages, setTotalPages] = useState(1);
    const [totalCount, setTotalCount] = useState(0);
-   // Function to fetch data from the API
-   const fetchStockData = async (page = 1, limit = 10) => {
+
+
+   const fetchStockData = async () => {
       try {
          setLoading(true);
-         const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/stock/list?page=${page}&limit=${limit}`, {
-            method: 'GET',
-            headers: {
-               'Content-Type': 'application/json',
-            },
-         });
-         const { data, message, error } = await response.json();
+         const response = await stockServices.stockList();
+         const { data, message, error } = response;
+         console.log("data", data)
          if (data) {
-            setStockData(data.rows);
+            setStockData(data?.data?.rows);
             setPage(data.page);
             setLimit(data.limit);
             setTotalPages(data.totalPages);
@@ -40,9 +38,14 @@ const StockListing = () => {
          setLoading(false);
       }
    };
+
+
+
    useEffect(() => {
       fetchStockData(page, limit);
    }, [page, limit]);
+
+
    const handleSearch = (query) => {
       if (query.trim() !== '') {
          const filteredData = stockData.filter((stock) =>
@@ -121,8 +124,8 @@ const StockListing = () => {
                      </tr>
                   </thead>
                   <tbody>
-                     {stockData.length > 0 ? (
-                        stockData.map((stock, index) => (
+                     {stockData?.length > 0 ? (
+                        stockData?.map((stock, index) => (
                            <StockRow key={index} stock={stock} index={index} />
                         ))
                      ) : (
