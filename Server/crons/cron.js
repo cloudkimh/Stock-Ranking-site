@@ -14,9 +14,9 @@ export const startCronJob = async () => {
   //    .catch((error) => console.error('❌ Error in generate Token cron:', error));
 
   // every 24 Hours cron
-  // cron.schedule(
-  //   "0 0 * * *",
-  //   async () => {
+  cron.schedule(
+    "0 0 * * *",
+    async () => {
       // KOSDAQ
       await stockListCronJob("0")
         .then(() =>
@@ -39,20 +39,20 @@ export const startCronJob = async () => {
           console.error("❌ Error in KOSPI stock list cron: ", error)
         );
 
-  //     await stockInfoCronJob()
-  //       .then(() => console.log("✅ stock info cron completed successfully"))
-  //       .catch((error) =>
-  //         console.error("❌ Error in stock info cron: ", error)
-  //       );
-  //     await stockDetailCronJob()
-  //       .then(() => console.log("✅ stock detail cron completed successfully"))
-  //       .catch((error) =>
-  //         console.error("❌ Error in stock detail cron: ", error)
-  //       );
-  //   },
-  //   {
-  //     timezone: TIMEZONE,
-  //     scheduled: true, // Ensures the job starts immediately on app start
-  //   }
-  // );
+      await stockInfoCronJob()
+        .then(() => console.log("✅ stock info cron completed successfully"))
+        .catch((error) =>
+          console.error("❌ Error in stock info cron: ", error)
+        );
+      await stockDetailCronJob()
+        .then(() => console.log("✅ stock detail cron completed successfully"))
+        .catch((error) =>
+          console.error("❌ Error in stock detail cron: ", error)
+        );
+    },
+    {
+      timezone: TIMEZONE,
+      scheduled: true, // Ensures the job starts immediately on app start
+    }
+  );
 };
