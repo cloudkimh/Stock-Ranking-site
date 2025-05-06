@@ -57,6 +57,16 @@ export default (sequelize, DataTypes) => {
         dstr_rt: { type: DataTypes.STRING, allowNull: true },
         return_code: { type: DataTypes.INTEGER, allowNull: true },
         return_msg: { type: DataTypes.STRING, allowNull: true },
+
+        cur_prc_rank: { type: DataTypes.INTEGER, defaultValue: 0, allowNull: true },
+        mac_rank: { type: DataTypes.INTEGER, defaultValue: 0, allowNull: true },
+        sale_amt_rank: { type: DataTypes.INTEGER, defaultValue: 0, allowNull: true },
+        bus_pro_rank: { type: DataTypes.INTEGER, defaultValue: 0, allowNull: true },
+        cup_nga_rank: { type: DataTypes.INTEGER, defaultValue: 0, allowNull: true },
+        per_rank: { type: DataTypes.INTEGER, defaultValue: 0, allowNull: true },
+        pbr_rank: { type: DataTypes.INTEGER, defaultValue: 0, allowNull: true },
+        trde_qty_rank: { type: DataTypes.INTEGER, defaultValue: 0, allowNull: true },
+
         created_at: {
             type: DataTypes.DATE,
             allowNull: true,

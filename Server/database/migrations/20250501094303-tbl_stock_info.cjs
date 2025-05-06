@@ -9,6 +9,36 @@ module.exports = {
 
         const modifications = async (columns) => {
             // Add new columns if they don't already exist
+
+            await queryInterface.sequelize.transaction(async (t) => {
+                return await Promise.all([
+                  !("cur_prc_rank" in columns) && queryInterface.addColumn(tableName, "cur_prc_rank",
+                    { type: Sequelize.INTEGER, defaultValue: 0, allowNull: true },
+                  ), 
+                  !("mac_rank" in columns) && queryInterface.addColumn(tableName, "mac_rank",
+                    { type: Sequelize.INTEGER, defaultValue: 0, allowNull: true },
+                  ), 
+                  !("sale_amt_rank" in columns) && queryInterface.addColumn(tableName, "sale_amt_rank",
+                    { type: Sequelize.INTEGER, defaultValue: 0, allowNull: true },
+                  ), 
+                  !("bus_pro_rank" in columns) && queryInterface.addColumn(tableName, "bus_pro_rank",
+                    { type: Sequelize.INTEGER, defaultValue: 0, allowNull: true },
+                  ), 
+                  !("cup_nga_rank" in columns) && queryInterface.addColumn(tableName, "cup_nga_rank",
+                    { type: Sequelize.INTEGER, defaultValue: 0, allowNull: true },
+                  ), 
+                  !("per_rank" in columns) && queryInterface.addColumn(tableName, "per_rank",
+                    { type: Sequelize.INTEGER, defaultValue: 0, allowNull: true },
+                  ), 
+                  !("pbr_rank" in columns) && queryInterface.addColumn(tableName, "pbr_rank",
+                    { type: Sequelize.INTEGER, defaultValue: 0, allowNull: true },
+                  ), 
+                  !("trde_qty_rank" in columns) && queryInterface.addColumn(tableName, "trde_qty_rank",
+                    { type: Sequelize.INTEGER, defaultValue: 0, allowNull: true },
+                  ), 
+                ]);
+            });
+
             
         };
 
@@ -66,6 +96,16 @@ module.exports = {
           dstr_rt: { type: Sequelize.STRING, allowNull: true },
           return_code: { type: Sequelize.INTEGER, allowNull: true },
           return_msg: { type: Sequelize.STRING, allowNull: true },
+          
+          cur_prc_rank: { type: Sequelize.INTEGER, defaultValue: 0, allowNull: true },
+          mac_rank: { type: Sequelize.INTEGER, defaultValue: 0, allowNull: true },
+          sale_amt_rank: { type: Sequelize.INTEGER, defaultValue: 0, allowNull: true },
+          bus_pro_rank: { type: Sequelize.INTEGER, defaultValue: 0, allowNull: true },
+          cup_nga_rank: { type: Sequelize.INTEGER, defaultValue: 0, allowNull: true },
+          per_rank: { type: Sequelize.INTEGER, defaultValue: 0, allowNull: true },
+          pbr_rank: { type: Sequelize.INTEGER, defaultValue: 0, allowNull: true },
+          trde_qty_rank: { type: Sequelize.INTEGER, defaultValue: 0, allowNull: true },
+
           created_at: {
               type: Sequelize.DATE,
               allowNull: true,

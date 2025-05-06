@@ -67,6 +67,11 @@ export default (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: true,
         },
+        category: {
+            type: DataTypes.STRING,
+            allowNull: true,
+            defaultValue: null,
+        },
         created_at: {
             type: DataTypes.DATE,
             allowNull: true,

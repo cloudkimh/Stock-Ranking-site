@@ -6,7 +6,7 @@ const { StocklistModel, StockinfoModel, StockdetailModel } = models;
 
 export const stockListServices = async (req, res) => {
     try {
-        const { page, limit, offset, where } = await queryFilter({
+        const { page, limit, offset, where, order } = await queryFilter({
 			query: req?.query,
 			strSearchableFields: ['name', 'code'], // string filter column with "req.query.search" parameter
 			dateField: 'created_at' // Date filter
