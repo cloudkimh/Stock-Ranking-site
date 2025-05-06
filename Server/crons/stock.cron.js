@@ -38,8 +38,7 @@ export const stockListCronJob = async (mrkt_tp = "0") => {
             mrkt_tp: mrkt_tp,
          },
          {
-            // authorization: "Bearer W1rp9QvKrrOfvK8iX4sqZG5ddU0VMBjWVC0vipkpfMv_nbqT24FE9P1UwbkYdoVf5l7r1U-IQHSx6_QZIZ5GBw",
-            authorization: "Bearer 5jDS5pJMO07xGg9XfBOCK5wXZ2vsKw5cgBwlUR3ZU7GpmXRJF95wd3XG7qPjfPFe-thSPAYvEGqzmgHTEszaiw",
+            authorization: "Bearer jKEb-51lKb2Ku65Fg7LW6QnH7esoXjnJ1TFdG825bstP0okA7Wb8lH_fgdj2bdoWdBir7hz2Q2RIQM1uZiD-lg",
             "cont-yn": "N",
             "next-key": "",
             "api-id": "ka10099",
@@ -120,7 +119,7 @@ export const stockInfoCronJob = async () => {
                   stk_cd
                },
                {
-                  authorization: "Bearer 5jDS5pJMO07xGg9XfBOCK5wXZ2vsKw5cgBwlUR3ZU7GpmXRJF95wd3XG7qPjfPFe-thSPAYvEGqzmgHTEszaiw",
+                  authorization: "Bearer jKEb-51lKb2Ku65Fg7LW6QnH7esoXjnJ1TFdG825bstP0okA7Wb8lH_fgdj2bdoWdBir7hz2Q2RIQM1uZiD-lg",
                   "cont-yn": "N",
                   "next-key": "",
                   "api-id": "ka10001",
@@ -177,7 +176,7 @@ export const stockDetailCronJob = async () => {
 
       if(!isEmpty(stockList)) {
          const currentDate = dayjs().format('YYYYMMDD');
-         console.log("currentDate ===>> ",currentDate);
+         // console.log("currentDate ===>> ",currentDate);
          
          let stockDetailAry = [];
          let i = 1;
@@ -193,7 +192,7 @@ export const stockDetailCronJob = async () => {
                   unit_tp: "1000"
                },
                {
-                  authorization: "Bearer 5jDS5pJMO07xGg9XfBOCK5wXZ2vsKw5cgBwlUR3ZU7GpmXRJF95wd3XG7qPjfPFe-thSPAYvEGqzmgHTEszaiw",
+                  authorization: "Bearer jKEb-51lKb2Ku65Fg7LW6QnH7esoXjnJ1TFdG825bstP0okA7Wb8lH_fgdj2bdoWdBir7hz2Q2RIQM1uZiD-lg",
                   "cont-yn": "N",
                   "next-key": "",
                   "api-id": "ka10059",
@@ -201,7 +200,7 @@ export const stockDetailCronJob = async () => {
             );
 
             // Process the response data
-            console.log("response?.data ===>> ",response?.data);
+            // console.log("response?.data ===>> ",response?.data);
             
             const stockDetail = response?.data?.stk_invsr_orgn[0];
             const convertIntKeys = ["acc_trde_qty", "acc_trde_prica", "ind_invsr", "frgnr_invsr", "orgn", "fnnc_invt", "insrnc", "etc_fnnc", "bank", "penfnd_etc", "samo_fund", "natn", "etc_corp", "natfor"]
