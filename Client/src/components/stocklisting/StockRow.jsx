@@ -4,42 +4,47 @@ import { Badge } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import rankImage from '../../../public/assets/icons/rank.png'
 
-const StockRow = ({ stock }) => {
+const StockRow = ({ stock, index }) => {
    return (
       <tr>
          <td>
             <span className='position-relative'>
-               <span className='rank_text'>{stock.rank}</span>
+               <span className='rank_text'>{index + 1}</span>
                <Image src={rankImage} width={40} height={40} alt="rank" />
             </span>
          </td>
          <td>
-            <a href={`/stock/${stock.name.toLowerCase().replace(/\s+/g, '-')}`} className='stocklink d-flex gap-2 align-items-center'>
-               <span className="stockImage">
-                  <Image src={stock.image} width={25} height={25} alt="StockImage" />
-               </span>
+            <a href={`/stock/${stock?.stock_info.stk_nm.toLowerCase().replace(/\s+/g, '-')}`} className='stocklink d-flex gap-2 align-items-center'>
+
                <span className="d-flex flex-column align-items-baseline">
-                  <span>{stock.name}</span>
+                  <span>{stock.stock_info.stk_nm}</span>
                   <span className='stockcategory'>{stock.category}</span>
                </span>
             </a>
          </td>
-         <td>{stock.currentPrice}</td>
-         <td>{stock.marketCap}</td>
+         <td>{stock.stock_info.cur_prc}</td>
+         <td>{stock.stock_info.mac}</td>
          <td>
-            <Badge bg={stock.profitMargin > 0 ? 'success' : 'danger'}>
-               {stock.profitMargin}%
-            </Badge>
+            {
+               stock.stock_info.sale_amt !== null ? <Badge bg={stock.stock_info.sale_amt > 0 ? 'success' : 'danger'}>
+                  {stock.stock_info.sale_amt}%
+               </Badge> : "-"
+            }
          </td>
-         <td>{stock.operatingProfit}</td>
-         <td>{stock.netProfit}</td>
+         <td>{stock.stock_info.bus_pro ?? "-"}</td>
+         <td>{stock.stock_info.cup_nga ?? "-"}</td>
          <td>
-            <Badge bg={'warning'}>{stock.per}</Badge>
+            {
+               stock.stock_info.per ? <Badge bg={'warning'}>{stock.stock_info.per}</Badge> : "-"
+            }
          </td>
          <td>
-            <Badge bg={'danger'}>{stock.pbr}</Badge>
+            {
+               stock.stock_info.pbr ? <Badge bg={'danger'}>{stock.stock_info.pbr}</Badge> : "-"
+            }
+
          </td>
-         <td>{stock.tradingVolume}</td>
+         <td>{stock.stock_info.trde_qty}</td>
       </tr>
    );
 };
