@@ -19,9 +19,10 @@ export const stockListServices = async (req, res) => {
                     model: StockinfoModel,
                     as: 'stock_info',
                     required: false,
+                    attributes: ['stk_nm', 'cur_prc_rank', 'mac_rank', 'sale_amt_rank', 'bus_pro_rank', 'cup_nga_rank', 'per_rank', 'pbr_rank', 'trde_qty_rank', 'cur_prc', 'mac', 'sale_amt', 'bus_pro', 'cup_nga', 'per', 'pbr', 'trde_qty'],
                 }
             ],
-            // attributes: [],
+            attributes: ['name','id','category','code','created_at','updated_at'],
             // raw: true,
             // logging: console.log,
         }
