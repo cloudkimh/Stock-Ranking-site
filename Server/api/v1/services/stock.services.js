@@ -46,7 +46,6 @@ export const stockDetailsServices = async (req, res) => {
 
         let options = {
             where,
-            // attributes: [],
             include: [
                 {
                     model: StockinfoModel,
@@ -58,11 +57,8 @@ export const stockDetailsServices = async (req, res) => {
                     as: 'stock_detail',
                     required: false,
                 }
-            ],
-            order: [
-                ['created_at', 'DESC'],
-                ['updated_at', 'DESC']
-            ],
+            ]
+            // attributes: [],
             // raw: true,
             // logging: console.log,
         }
