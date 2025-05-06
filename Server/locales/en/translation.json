@@ -1,0 +1,32 @@
+{
+   "welcome": "Welcome to the casino!",
+   "success": "success",
+
+   "Internal server error": "Internal server error",
+   "Invalid or expired token": "Invalid or expired token",
+   "Token is missing": "Token is missing",
+   "Encryption failed": "Encryption failed",
+   "Decryption failed": "Decryption failed",
+   "Required input is missing": "Required input is missing",
+   "Invalid Input parameter": "Invalid Input parameter",
+   "Invalid Input payload": "Invalid Input payload",
+   "Error occured: Alphabet provider API": "Error occured: Alphabet provider API",
+   "Please provide at least one valid input": "Please provide at least one valid input",
+   "Please provide valid payload": "Please provide valid payload",
+   "Required payload is missing": "Required payload is missing",
+   "Please provide valid parameter": "Please provide valid parameter",
+   "Required parameter is missing": "Required parameter is missing",
+
+   "Login successfully": "Login successfully",
+   "Logout successfully": "Logout successfully",
+   "Domain fetched successfully": "Domain fetched successfully",
+
+   "id is required": "id is required",
+
+   "Username not matched": "Username not matched",
+   "Password not matched": "Password not matched",
+   "Username or password does not match": "Username or password does not match",
+   "Failed to fetch vendors": "Failed to fetch vendors",
+   "Failed to fetch games": "Failed to fetch games",
+   "Bank name already exists": "Bank name already exists"  
+}

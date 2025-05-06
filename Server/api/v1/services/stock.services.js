@@ -8,32 +8,20 @@ export const stockListServices = async (req, res) => {
     try {
         const { page, limit, offset, where } = await queryFilter({
 			query: req?.query,
-			strSearchableFields: ['name', 'code'], // string filter column with search value
-  			intSearchFields: [''], // integer filter column with search value
+			strSearchableFields: ['name', 'code'], // string filter column with "req.query.search" parameter
 			dateField: 'created_at' // Date filter
 		});
 
         let options = {
-            where,
-            // attributes: [],
+            where, offset, limit, order,
             include: [
                 {
                     model: StockinfoModel,
                     as: 'stock_info',
                     required: false,
-                },
-                // {
-                //     model: StockdetailModel,
-                //     as: 'stock_detail',
-                //     required: false,
-                // }
+                }
             ],
-            order: [
-                ['created_at', 'DESC'],
-                ['updated_at', 'DESC']
-            ],
-            offset,
-            limit,
+            // attributes: [],
             // raw: true,
             // logging: console.log,
         }
@@ -48,8 +36,6 @@ export const stockListServices = async (req, res) => {
 
 export const stockDetailsServices = async (req, res) => {
     try {
-        let { id, code } = req?.query;
-
         const { page, limit, offset, where } = await queryFilter({
 			query: req?.query,
 			strSearchableFields: [], // string filter column with search value

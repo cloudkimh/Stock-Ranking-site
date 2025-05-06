@@ -47,11 +47,19 @@ export default (sequelize, DataTypes) => {
         sequelize,
         tableName: TABLE_NAME?.tbl_stock_detail || 'tbl_stock_detail',
         paranoid: true,
-        hooks,
+        hooks: hooks(sequelize),
         deletedAt: 'deleted_at',
         createdAt: 'created_at',
         updatedAt: 'updated_at',
         underscored: true, // optional
+        indexes: [
+            {
+                fields: ['id'],
+            },
+            {
+                fields: ['stk_cd'],
+            }
+        ]
     });
 
     StockdetailModel.associate = (models) => {

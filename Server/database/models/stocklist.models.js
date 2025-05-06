@@ -83,7 +83,7 @@ export default (sequelize, DataTypes) => {
         sequelize,
         tableName: TABLE_NAME?.tbl_stock_list || 'tbl_stock_list',
         paranoid: true,
-        hooks,
+        hooks: hooks(sequelize),
         deletedAt: 'deleted_at',
         createdAt: 'created_at',
         updatedAt: 'updated_at',

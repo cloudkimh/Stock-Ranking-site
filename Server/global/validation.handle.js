@@ -28,7 +28,8 @@ export const paginationValidator = [
 
 export const atLeastOneFieldRequired = (fieldsToCheck) => {
     return (value, { req }) => {
-		const hasAtLeastOneField = fieldsToCheck.some(field => req.body?.[field] !== undefined);
+		let payload = req.method == "GET" ? req.query : req.body;
+		const hasAtLeastOneField = fieldsToCheck.some(field => payload?.[field] !== undefined);
 	
 		if (!hasAtLeastOneField) {
 			throwError(statusCode.BAD_REQUEST, `Please provide at least one valid input`);
@@ -39,20 +40,40 @@ export const atLeastOneFieldRequired = (fieldsToCheck) => {
 };
 
 export const rejectExtraFields = (allowedFields = []) => {
-	let defaultField = "timestamp";
-	allowedFields.push(defaultField);
-	
-	return (req, res, next) => {
-		const extraFields = Object.keys(req?.body || req?.query).filter(
-			(key) => !allowedFields.includes(key)
-		);
-		
-		if (extraFields.length > 0) {
-			// Use your custom throwError function or pass error to next()
-			const message = 'Please provide valid input';
-			// return next({ statusCode: statusCode.BAD_REQUEST, message: 'Please provide valid input' });
-			throwError(statusCode.BAD_REQUEST, message);
-		}
-		next();
-	};
+    const defaultFields = ["timestamp", "search"];
+    let fieldsToCheck = [...allowedFields, ...defaultFields];
+
+    return (req, res, next) => {
+        if(req?.method == "GET") {
+			fieldsToCheck = [ 'page', 'limit', 'search', 'start_date', 'end_date', ...fieldsToCheck ];
+            if (req?.query && typeof req?.query === 'object') {
+                const extraQueryFields = Object.keys(req.query).filter(
+                    (key) => !fieldsToCheck.includes(key)
+                );
+    
+                if (extraQueryFields.length > 0) {
+                    const message = 'Please provide valid parameter';
+                    return throwError(statusCode.BAD_REQUEST, message);
+                }
+            } else {
+                const message = 'Required parameter is missing';
+                return throwError(statusCode.BAD_REQUEST, message);
+            }
+        } else {
+            if (req?.body && typeof req?.body === 'object') {
+                const extraBodyFields = Object.keys(req.body).filter(
+                    (key) => !fieldsToCheck.includes(key)
+                );
+    
+                if (extraBodyFields.length > 0) {
+                    const message = 'Please provide valid payload';
+                    return throwError(statusCode.BAD_REQUEST, message);
+                }
+            } else {
+                const message = 'Required payload is missing';
+                return throwError(statusCode.BAD_REQUEST, message);
+            }
+        }
+        next();
+    };
 };

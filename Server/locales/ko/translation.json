@@ -1,0 +1,27 @@
+{
+   "welcome": "카지노에 오신 것을 환영합니다!",
+   "success": "성공",
+ 
+   "Internal server error": "내부 서버 오류",
+   "Invalid or expired token": "유효하지 않거나 만료된 토큰입니다",
+   "Token is missing": "토큰이 누락되었습니다",
+   "Encryption failed": "암호화에 실패했습니다",
+   "Decryption failed": "복호화에 실패했습니다",
+   "Required input is missing": "필수 입력이 누락되었습니다",
+   "Invalid Input parameter": "잘못된 입력 매개변수입니다",
+   "Invalid Input payload": "잘못된 입력 페이로드입니다",
+   "Error occured: Alphabet provider API": "오류 발생: Alphabet 제공자 API",
+   "Please provide at least one valid input": "최소 하나의 유효한 입력을 제공해주세요",
+   "Please provide valid payload": "유효한 페이로드를 제공해주세요",
+   "Required payload is missing": "필수 페이로드가 누락되었습니다",
+   "Please provide valid parameter": "유효한 매개변수를 제공해주세요",
+   "Required parameter is missing": "필수 매개변수가 누락되었습니다",
+ 
+   "id is required": "id는 필수 항목입니다",
+   "User unique id is required": "사용자 고유 ID는 필수 항목입니다",
+   "User unique id must be a string": "사용자 고유 ID는 문자열이어야 합니다",
+   "Password is required": "비밀번호는 필수 항목입니다",
+   "Password must be a string": "비밀번호는 문자열이어야 합니다",
+ 
+   "Username or password does not match": "아이디 또는 비밀번호가 일치하지 않습니다"
+} 
