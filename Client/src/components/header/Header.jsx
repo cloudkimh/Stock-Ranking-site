@@ -1,10 +1,11 @@
 'use client'
 
-import { Menu, ListMinus } from "lucide-react";
+import { Menu, ListMinus, Moon, Sun } from "lucide-react";
 import React, { useState } from 'react'
 import './header.css'
 import UserDropdown from "../UserDropdown/UserDropdown";
 import LanguageSelect from "./LanguageSelect";
+import ThemeToggle from "../ThemeToggle/ThemeToggle";
 
 const Header = () => {
 
@@ -23,7 +24,8 @@ const Header = () => {
                   <ListMinus size={32} fill="transparent" />
             }
          </button>
-         <div className="d-flex gap-2 ml-auto align-items-center">
+         <div className="d-flex gap-3 ml-auto align-items-center">
+            <ThemeToggle />
             <LanguageSelect />
             <UserDropdown />
          </div>

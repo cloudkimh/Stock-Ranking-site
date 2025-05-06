@@ -5,17 +5,16 @@ import React from 'react';
 
 const ApexChart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
-const HexagonRadarChart = () => {
+const HexagonRadarChart = ({ height }) => {
    const categories = [
-      'Code Security',
-      '운영',    
-      '커뮤니티',     
-      '기본',       
-      'Governance',
-      '마켓',        
+      'Market Cap (Rank 2)',
+      'Revenue (Rank 7)',
+      'PBR (Rank 23)',
+      'PER (Rank 12)',
+      'Operating Profit (Rank 2)',
    ];
 
-   const dataValues = [0, 0, 0, 0, 100, 100];
+   const dataValues = [0, 0, 0, 100, 100];
 
    const chartOptions = {
       chart: {
@@ -27,26 +26,29 @@ const HexagonRadarChart = () => {
          labels: {
             show: true,
             style: {
-               colors: '#fff',
-               fontSize: '14px',
+               colors: '#000',
+               fontSize: '10px',
             },
          },
       },
       fill: {
          opacity: 1,
-         colors: ['#FFD700'], // Yellow/Gold
+         colors: ['rgb(225, 245, 250)'],
+         strokeColors: '#47caeb',
       },
       yaxis: {
          show: false,
       },
+      colors: ['red'],
       stroke: {
          width: 2,
-         colors: ['#FFD700'], // Yellow/Gold
+         show: true,
+         colors: ['#47caeb'],
       },
       markers: {
          size: 4,
          colors: ['#fff'],
-         strokeColors: '#FFD700',
+         strokeColors: '#47caeb',
       },
       dataLabels: {
          enabled: false,
@@ -54,10 +56,10 @@ const HexagonRadarChart = () => {
       plotOptions: {
          radar: {
             polygons: {
-               strokeColor: '#1e1e1e',
-               fill: {
-                  colors: ['#698b3f', '#698b3f'],
-               },
+               strokeColor: '#47caeb',
+               // fill: {
+               //    colors: ['#fff', '#000'],
+               // },
             },
          },
       },
@@ -76,7 +78,7 @@ const HexagonRadarChart = () => {
             type="radar"
             options={chartOptions}
             series={chartSeries}
-            height={450}
+            height={height}
          />
       </div>
    );

@@ -59,7 +59,7 @@ body.dark .webglobe:hover{
    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
 }
 body.dark .stockbox {
-   background-color: rgba(34, 37, 49, 0.58);
+   background-color: #17283b;
 }
 .stocknumber{
    font-size: 30px;
@@ -112,7 +112,7 @@ body.dark .stock_inf_name{
    flex-wrap: wrap;
 }
 body.dark .stockmarket_tab_section{
-   background-color: rgba(34, 37, 49, 0.58);
+   background-color: #17283b;
 }
 .stockmarket_tab_section{
    margin-top: 50px;
@@ -141,11 +141,11 @@ body.dark .stockmarket_tab_section{
    padding: 0 20px;
 }
 body.dark .stockwrap:nth-child(2){
-   border-left: 1px solid #3c404c;
-   border-right: 1px solid #3c404c;
+   border-left: 1px solid #4c6178;
+   border-right: 1px solid #4c6178;
 }
 body.dark .stockwrap:nth-child(3){
-   border-right: 1px solid #3c404c;
+   border-right: 1px solid #4c6178;
 }
 .stockwrap:nth-child(2){
    border-left: 1px solid rgba(167, 165, 165, 0.439);

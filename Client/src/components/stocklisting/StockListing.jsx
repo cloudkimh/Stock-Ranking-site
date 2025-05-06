@@ -1,10 +1,15 @@
 'use client'
-import { ChevronsUpDown, ChevronUp } from 'lucide-react';
+import { ArrowDown, ArrowUp, ChevronsUpDown, ChevronUp, Hexagon, Triangle } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 import './stocklisting.css';
 import StockRow from './StockRow';
 import StockSearch from '../StockSearchBox/StockSearch';
 import { stockServices } from '@/services/api';
+import stockCardImage from '../../../public/assets/icons/top-info-shape.png'
+import applestock from '../../../public/assets/icons/apple.png'
+import Image from 'next/image';
+import LoaderUI from '../Loader/LoaderUI';
+import HexagonRadarChart from '../Charts/HexagonRadarChart';
 
 const StockListing = () => {
    const [stockData, setStockData] = useState([]);
@@ -73,11 +78,49 @@ const StockListing = () => {
       <div className="stocklisting_block">
          <div className="topheader_title">
             <h3>Top 10 Rank Stock List</h3>
-            <StockSearch onSearch={handleSearch} />
+            {/* <StockSearch onSearch={handleSearch} /> */}
          </div>
-         <div className="table-responsive cm_table">
+         <div className="stockCard_wrapper">
+            <div className="stockUICard">
+               <div className='image_abs'>
+                  <span>#1</span>
+                  <Image width={70} height={100} src={stockCardImage} />
+               </div>
+               <div className="">
+                  <div className="d-flex align-items-baseline">
+                     <div className="">
+                        <div className="stockIcon">
+                           <Image width={40} height={40} src={applestock} />
+                        </div>
+                        <h3 className='mb-0'> <b>Apple</b></h3>
+                     </div>
+                     <div className="stockdata_box">
+                        <h5 className='text-danger'>
+                           <b> 1,369</b>
+                        </h5>
+                        <p className='text-danger'>
+                           <ArrowUp width={20} />
+                           27 (-3.65%)
+                        </p>
+                     </div>
+                  </div>
+                  <div className="">
+                     <HexagonRadarChart height={340} />
+                     <div className="d-flex justify-content-between">
+                        <div className="d-flex align-items-center gap-3">
+                           <h5 className='fw-bold mb-0'>Score</h5>
+                           -
+                           <p className='fw-bold percent_text mb-0'>68</p>
+                        </div>
+                        <button className='viewbtn' type="button">View</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div className="table-responsive cm_table d-none">
             {loading ? (
-               <div className="text-center py-4">Loading stock data...</div>
+               <LoaderUI />
             ) : (
                <table className="table">
                   <thead>
@@ -143,56 +186,58 @@ const StockListing = () => {
                </table>
             )}
          </div>
-         <div className="pagination-wrapper d-flex justify-content-between align-items-center mt-3">
-            <div>
-               Showing {(page - 1) * limit + 1} to {Math.min(page * limit, totalCount)} of {totalCount} entries
-            </div>
-            <div className="pagination_block d-flex align-items-center gap-2">
-               <button
-                  className="btn btn-sm btn-outline-primary"
-                  onClick={() => setPage(1)}
-                  disabled={page === 1}
-               >
-                  First
-               </button>
-               <button
-                  className="btn btn-sm btn-outline-primary"
-                  onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
-                  disabled={page === 1}
-               >
-                  Previous
-               </button>
-               <span>
-                  Page <strong>{page}</strong> of <strong>{totalPages}</strong>
-               </span>
-               <button
-                  className="btn btn-sm btn-outline-primary"
-                  onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
-                  disabled={page === totalPages}
-               >
-                  Next
-               </button>
-               <button
-                  className="btn btn-sm btn-outline-primary"
-                  onClick={() => setPage(totalPages)}
-                  disabled={page === totalPages}
-               >
-                  Last
-               </button>
-               <select
-                  className="form-select form-select-sm"
-                  value={limit}
-                  onChange={(e) => {
-                     setPage(1); // Reset to first page when limit changes
-                     setLimit(Number(e.target.value));
-                  }}
-               >
-                  {[10, 20, 50, 100].map((num) => (
-                     <option key={num} value={num}>
-                        Show {num}
-                     </option>
-                  ))}
-               </select>
+         <div className="d-none">
+            <div className="pagination-wrapper d-flex justify-content-between align-items-center mt-3">
+               <div>
+                  Showing {(page - 1) * limit + 1} to {Math.min(page * limit, totalCount)} of {totalCount} entries
+               </div>
+               <div className="pagination_block d-flex align-items-center gap-2">
+                  <button
+                     className="btn btn-sm btn-outline-primary"
+                     onClick={() => setPage(1)}
+                     disabled={page === 1}
+                  >
+                     First
+                  </button>
+                  <button
+                     className="btn btn-sm btn-outline-primary"
+                     onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+                     disabled={page === 1}
+                  >
+                     Previous
+                  </button>
+                  <span>
+                     Page <strong>{page}</strong> of <strong>{totalPages}</strong>
+                  </span>
+                  <button
+                     className="btn btn-sm btn-outline-primary"
+                     onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
+                     disabled={page === totalPages}
+                  >
+                     Next
+                  </button>
+                  <button
+                     className="btn btn-sm btn-outline-primary"
+                     onClick={() => setPage(totalPages)}
+                     disabled={page === totalPages}
+                  >
+                     Last
+                  </button>
+                  <select
+                     className="form-select form-select-sm"
+                     value={limit}
+                     onChange={(e) => {
+                        setPage(1); // Reset to first page when limit changes
+                        setLimit(Number(e.target.value));
+                     }}
+                  >
+                     {[10, 20, 50, 100].map((num) => (
+                        <option key={num} value={num}>
+                           Show {num}
+                        </option>
+                     ))}
+                  </select>
+               </div>
             </div>
          </div>
       </div>

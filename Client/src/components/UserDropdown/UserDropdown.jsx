@@ -3,27 +3,21 @@ import React, { useEffect, useState } from 'react'
 import './userdropdown.css'
 import { CircleUserRound, User, LogOut } from "lucide-react";
 import { Form } from 'react-bootstrap';
+import Image from 'next/image';
+import userImage from '../../../public/assets/icons/user.jpg'
 
 const UserDropdown = () => {
-   const [isDark, setIsDark] = useState(false);
-   const toggleMode = (e) => {
-      const isDarkMode = e.target.checked;
-      document.body.classList.toggle('dark', isDarkMode);
-      localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-      setIsDark(isDarkMode);
-   }
-   useEffect(() => {
-      const savedTheme = localStorage.getItem('theme');
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      const darkMode = savedTheme === 'dark' || (!savedTheme && prefersDark);
-      document.body.classList.toggle('dark', darkMode);
-      setIsDark(darkMode);
-   }, []);
 
    return (
       <div className="userbtn_wrapper">
          <button className='userbtn' type="button">
-            <CircleUserRound size={30} fill="transparent" />
+            <div className="usericon">
+               <Image src={userImage} width={40} height={40} alt='userImage' />
+            </div>
+            <div className="userinfo">
+               <h6>Lucky Joo</h6>
+               <p>Admin</p>
+            </div>
          </button>
          <div className="userdropdown">
             <div className="userdropdown_inner">
@@ -31,15 +25,7 @@ const UserDropdown = () => {
                   <CircleUserRound size={25} fill="transparent" />
                   <p>Lucky Joo</p>
                </div>
-               <div className="list">
-                  <Form.Check
-                     onChange={toggleMode}
-                     type="switch"
-                     id="custom-switch"
-                     label='Dark Mode'
-                     checked={isDark}
-                  />
-               </div>
+
                <div className="list">
                   <button className='logoutbtn btn btn-transparent'>
                      <User size={20} fill="transparent" />
