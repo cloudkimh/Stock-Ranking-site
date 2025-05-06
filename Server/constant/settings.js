@@ -15,3 +15,5 @@ export const IS_CRON_JOB_START = true;
 
 // Redis setting
 export const IS_REDIS_START = true;
+export const IS_REDIS_INIT = true;
+export const IS_REDIS_TEST_CODE = false;

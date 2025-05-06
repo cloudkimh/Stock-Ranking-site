@@ -2,7 +2,7 @@ import app from './app.js'; // Add `.js` if using ES Modules and the file extens
 import { sequelize } from './database/models/index.js';
 import { startCronJob } from './crons/cron.js';
 import { initRedis } from './ioredis/redis.js';
-import { IS_CRON_JOB_START, IS_REDIS_START } from './constant/settings.js';
+import { IS_CRON_JOB_START, IS_REDIS_INIT } from './constant/settings.js';
 
 const PORT = process.env.PORT || 8000;
 
@@ -13,9 +13,9 @@ try {
 
 			// Start the server
 			app.listen(PORT, () => {
-				console.log(`✅ Server is running on port ${PORT}`);
+				console.log(`🚀 Server is running on port ${PORT}`);
 
-				if(IS_REDIS_START == true) {
+				if(IS_REDIS_INIT == true) {
 					initRedis()
 						.then(() => console.log('✅ ioredis initialize successfully'))
 						.catch((error) => console.error('❌ Error starting in ioredis:', error));		
@@ -24,7 +24,7 @@ try {
 				// After the server starts, call the cron job function asynchronously
 				if(IS_CRON_JOB_START == true) {
 					startCronJob()
-						.then(() => console.log('✅ Every Cron job started successfully'))
+						.then(() => console.log('🕐 Every Cron job started successfully'))
 						.catch((error) => console.error('❌ Error starting in every cron job:', error));
 				}
 

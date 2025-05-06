@@ -122,3 +122,12 @@ export const valueConvertIntoInteger = async (data, intKeys) => {
 
     return data;
 }
+
+// array chunk
+export const chunkArray = async (array = [], size = 100) => {
+    const chunks = [];
+    for (let i = 0; i < array.length; i += size) {
+      chunks.push(array.slice(i, i + size));
+    }
+    return chunks;
+}
