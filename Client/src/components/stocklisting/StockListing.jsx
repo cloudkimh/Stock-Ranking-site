@@ -84,13 +84,13 @@ const StockListing = () => {
             <div className="stockUICard">
                <div className='image_abs'>
                   <span>#1</span>
-                  <Image width={70} height={100} src={stockCardImage} />
+                  <Image width={70} height={100} src={stockCardImage} alt="img1" />
                </div>
                <div className="">
                   <div className="d-flex align-items-baseline">
                      <div className="">
                         <div className="stockIcon">
-                           <Image width={40} height={40} src={applestock} />
+                           <Image width={40} height={40} src={applestock} alt="img2" />
                         </div>
                         <h3 className='mb-0'> <b>Apple</b></h3>
                      </div>
