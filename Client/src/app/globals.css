@@ -5,16 +5,16 @@ body.dark {
 body {
   background: #f0f5f9;
   color: #000;
-  font-family: "Nanum Gothic", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
 }
 .main_content {
-  padding-left: 280px;
-  padding-top: 100px;
-  padding-right: 15px;
+  padding-left: 292px;
+  padding-top: 110px;
+  padding-right: 20px;
   transition: all 0.4s;
 }
 .sidebar_toggle .main_content {
-  padding-left: 15px;
+  padding-left: 20px;
 }
 .scrollbar-hide {
   scrollbar-width: none;
@@ -31,7 +31,7 @@ body.dark .inner_section{
   background-color: #fff;
   border-radius: 15px;
   padding: 20px;
-  height: calc(100vh - 115px);
+  height: calc(100vh - 130px);
   overflow: auto;
   box-shadow: rgba(37, 83, 185, 0.1) 0px 2px 6px;
 }
@@ -39,9 +39,19 @@ body.dark .themebutton{
   color: #fff;
 }
 .themebutton{
+  width: 30px;
+  height: 30px;
   background-color: transparent;
+  justify-content: center;
   border: unset;
+  border-radius: 100px;
+  display: flex;
+  padding: 0;
+  align-items: center;
   color: #000;
+}
+.themebutton:hover{
+  background-color: #cccccc76;
 }
 body.dark .form-select{
   background-color:#27334b;

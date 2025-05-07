@@ -79,7 +79,7 @@
    cursor: pointer;
 }
 .list:hover {
-   background-color: #ddd;
+   background-color: #e1f5fa;
 }
 .userdropdown_inner {
    display: flex;
@@ -104,7 +104,7 @@
    padding: 8px 10px;
    border-radius: 7px;
    display: flex;
-   background-color: rgb(0 0 0 / 13%);
+   background-color: rgb(0 170 205 / 13%);
    gap: 10px;
    align-items: center;
    margin-bottom: 5px;

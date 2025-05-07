@@ -6,9 +6,9 @@
    gap: 10px;
    border-radius: 15px;
    position: fixed;
-   right: 15px;
-   top: 15px;
-   width: calc(100% - 300px);
+   right: 20px;
+   top: 20px;
+   width: calc(100% - 312px);
    align-items: center;
    transition: all 0.4s;
    justify-content: space-between;
@@ -49,16 +49,18 @@ body.dark .language-select-btn{
    justify-content: center;
    width: 30px;
    height: 30px;
+   background-color: transparent;
    gap: 8px;
    border-radius: 100px;
-   background: none;
-   border: 1px solid #ccc;
-   padding:0;
+   overflow: hidden;
+   border: 1px solid transparent;
+   padding:0px;
    cursor: pointer;
 }
 .language-select-btn img{
-   width: 100%;
-   height: 100%;
+   width: 40px;
+   height: 40px;
+   object-fit: cover;
 }
 body.dark .language-dropdown {
    background: #000;
@@ -73,7 +75,7 @@ body.dark .language-dropdown {
    border-radius: 4px;
    list-style: none;
    padding: 0;
-   margin: 2px 0;
+   margin: 0px 0;
    display: none;
    z-index: 1000;
 }
@@ -86,9 +88,9 @@ body.dark .language-dropdown {
    background-color: transparent;
    display: flex;
    align-items: center;
+   font-size: 14px;
    gap: 8px;
-   padding: 5px 10px;
-   cursor: pointer;
+   padding: 5px 15px;
 }
 .language-dropdown button:hover {
    background: #f0f0f0;

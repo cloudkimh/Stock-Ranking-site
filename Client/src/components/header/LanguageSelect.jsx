@@ -28,15 +28,15 @@ const LanguageSelect = () => {
       if (language.code === selectedLanguage.code) return;
 
       const segments = pathname.split('/');
-      segments[1] = language.code; // Replace the locale segment
+      segments[1] = language.code;
       const newPath = segments.join('/');
-      router.push(newPath); // Navigate to new locale route
+      router.push(newPath);
    };
 
    return (
       <div className="language-select">
          <button className="language-select-btn">
-            <Image src={selectedLanguage.flag} alt={selectedLanguage.name} width={20} height={20} />
+            <Image src={selectedLanguage.flag} alt={selectedLanguage.name} width={40} height={40} />
          </button>
          <ul className="language-dropdown">
             {languages.map((language) => (
