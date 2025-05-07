@@ -102,7 +102,10 @@ body.dark .pagination_block .btn {
    box-shadow: 0 2px 6px rgba(37, 83, 185, .1);
    background-color: rgb(225, 245, 250);
    border-radius: 20px;
-   padding: 30px;
+   padding: 40px;
+}
+body.dark .stockUICard {
+   background-color: rgb(27 44 70);
 }
 .percent_text{
    font-size: 20px;
@@ -111,6 +114,7 @@ body.dark .pagination_block .btn {
 .stockCard_wrapper{
    display: flex;
    gap: 20px;
+   flex-wrap: wrap;
 }
 .viewbtn{
    padding: 10px;
@@ -129,13 +133,23 @@ body.dark .pagination_block .btn {
    background-color: #39bcdc;
 }
 .stockdata_box {
-   padding: 15px 50px;
+   padding: 15px 30px;
    background-color: #ff90905c;
    border-radius: 50px;
-   margin: 0 auto;
+   margin-left:auto;
+   width: 200px;
    display: flex;
    align-items: center;
    flex-direction: column;
+}
+body.dark .stockdata_box{
+   background-color: #a34c4c78;
+}
+.stockdata_box.blue {
+   background-color: #0000ff1a;
+}
+body.dark .stockdata_box.blue{
+   background-color: #0000ff45;
 }
 .stockdata_box h5{
    font-size: 30px;
@@ -146,8 +160,8 @@ body.dark .pagination_block .btn {
    margin-bottom: 0;
 }
 .stockIcon {
-   width: 50px;
-   height: 50px;
+   width: 60px;
+   height: 60px;
    overflow: hidden;
    margin-bottom: 10px;
    background-color: #fff;

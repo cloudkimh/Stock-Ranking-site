@@ -1,10 +1,10 @@
 .sidebar_container {
    width: 250px;
-   height: calc(100vh - 30px);
+   height: calc(100vh - 40px);
    position: fixed;
    border-radius: 15px;
-   left: 15px;
-   top: 15px;
+   left: 20px;
+   top: 20px;
    background-color: #fff;
    overflow: hidden;
    transition: all 0.4s;
@@ -73,7 +73,7 @@ body.dark .main_logo a img {
 }
 .navlist {
    margin-top: 25px;
-   padding: 0px 10px;
+   /* padding: 0px 0px; */
    height: calc(100vh - 125px);
    overflow: auto;
 }
@@ -84,10 +84,10 @@ body.dark .main_logo a img {
    list-style: none;
 }
 .navlist ul li a {
-   padding: 8px 10px;
+   padding: 10px 30px;
    display: flex;
    align-items: center;
-   gap: 10px;
+   gap: 15px;
    color: #111c2d;
    margin-bottom: 5px;
    text-decoration: none;
@@ -110,18 +110,149 @@ body.dark .navlist ul li a {
    transform: translateY(-50%);
    width: 0;
    height: 100%;
-   background-color: rgb(232 245 255);
+   background-color: rgb(229, 243, 251);
    z-index: -1;
    border-top-right-radius: 30px;
    border-bottom-right-radius: 30px;
    content: '';
 }
-body.dark .navlist ul li a::after {
+.navlist ul li:nth-child(1) a::after {
+   background-color: rgb(229, 243, 251);
+}
+.navlist ul li:nth-child(1) a:hover {
+   color: rgb(0, 133, 219);
+}
+.navlist ul li:nth-child(2) a::after {
+   background-color: #e7ecf0;
+}
+.navlist ul li:nth-child(2) a:hover {
+   color: #707A82;
+}
+.navlist ul li:nth-child(3) a::after {
+   background-color: #ffede9;
+}
+.navlist ul li:nth-child(3) a:hover {
+   color: rgb(251, 151, 125);
+}
+.navlist ul li:nth-child(4) a::after {
+   background-color: #dffff3;
+}
+.navlist ul li:nth-child(4) a:hover {
+   color: #4bd08b;
+}
+.navlist ul li:nth-child(5) a::after {
+   background-color: rgb(255, 246, 234);
+}
+.navlist ul li:nth-child(5) a:hover {
+   color: #f8c076;
+}
+.navlist ul li:nth-child(6) a::after {
+   background-color: #e7ecf0;
+}
+.navlist ul li:nth-child(6) a:hover {
+   color: #707A82;
+}
+.navlist ul li:nth-child(7) a::after {
+   background-color: #ffede9;
+}
+.navlist ul li:nth-child(7) a:hover {
+   color: rgb(251, 151, 125);
+}
+.navlist ul li:nth-child(8) a::after {
+   background-color: #dffff3;
+}
+.navlist ul li:nth-child(8) a:hover {
+   color: #4bd08b;
+}
+.navlist ul li:nth-child(9) a::after {
+   background-color: rgb(255, 246, 234);
+}
+.navlist ul li:nth-child(9) a:hover {
+   color: #f8c076;
+}
+.navlist ul li:nth-child(10) a::after {
+   background-color: #e7ecf0;
+}
+.navlist ul li:nth-child(10) a:hover {
+   color: #707A82;
+}
+.navlist ul li:nth-child(11) a:hover {
+   color: rgb(0, 133, 219);
+}
+
+body.dark .navlist ul li:nth-child(1) a::after {
    background-color: #253662;
 }
-.navlist ul li a.active,
-.navlist ul li a:hover {
-   color: rgb(55, 163, 230);
+body.dark .navlist ul li:nth-child(2) a::after {
+   background-color: #213744;
+}
+body.dark .navlist ul li:nth-child(2) a:hover {
+   color: #6cb2da;
+}
+body.dark .navlist ul li:nth-child(3) a::after {
+   background-color: #4b313d;
+}
+body.dark .navlist ul li:nth-child(4) a::after {
+   background-color: #1b3c48;
+}
+body.dark .navlist ul li:nth-child(5) a::after {
+   background-color: #4d3a2a;
+}
+body.dark .navlist ul li:nth-child(6) a::after {
+   background-color: #213744;
+}
+body.dark .navlist ul li:nth-child(6) a:hover {
+   color: #6cb2da;
+}
+body.dark .navlist ul li:nth-child(7) a::after {
+   background-color: #4b313d;
+}
+body.dark .navlist ul li:nth-child(8) a::after {
+   background-color: #1b3c48;
+}
+body.dark .navlist ul li:nth-child(9) a::after {
+   background-color: #4d3a2a;
+}
+body.dark .navlist ul li:nth-child(10) a::after {
+   background-color: #213744;
+}
+body.dark .navlist ul li:nth-child(10) a:hover {
+   color: #6cb2da;
+}
+body.dark .navlist ul li:nth-child(11) a::after {
+   background-color: #253662;
+}
+
+
+.navlist ul li:nth-child(1) a.active {
+   color: #0085db;
+}
+.navlist ul li:nth-child(2) a.active {
+   color: #707A82;
+}
+.navlist ul li:nth-child(3) a.active {
+   color: rgb(251, 151, 125);
+}
+.navlist ul li:nth-child(4) a.active {
+   color: #4bd08b;
+}
+.navlist ul li:nth-child(5) a.active {
+   color: #f8c076;
+}
+.navlist ul li:nth-child(6) a.active {
+   color: #707A82;
+}
+.navlist ul li:nth-child(7) a.active {
+   color: rgb(251, 151, 125);
+}
+.navlist ul li:nth-child(8) a.active {
+   color: #4bd08b;
+}
+.navlist ul li:nth-child(9) a.active {
+   color: #f8c076;
+}
+.navlist ul li:nth-child(10) a.active {
+   color: #707A82;
 }
 .navlist ul li a:hover::after {
    width: 100%;
